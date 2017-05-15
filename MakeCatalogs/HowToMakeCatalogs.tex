@@ -1,0 +1,104 @@
+\documentclass[10pt,preprint]{aastex}
+
+\usepackage{verbatim}
+\usepackage{graphicx}
+
+\begin{document}
+\title{Making Star Catalogs}
+\author{Melanie Good}
+\date{July 2011}
+
+\emph{Updated June 2014}
+
+\section{Making a star catalog}
+
+\begin{enumerate}
+\item Go to http://aladin.u-strasbg.fr/java/nph-aladin.
+\item In the text box at the top, type the name of your star and hit enter.
+\item Then click on (at the top) \emph{File -$>$ Load Catalog -$>$ Surveys in VizieR -$>$ 2-MASS-PSC -$>$ SUBMIT}. This should load the catalog onto your current view, and you will see on the right hand side as a separate "plane"
+\item Now you can go back to file and choose \emph{Export Planes}. Uncheck the image, and checkmark the 2MASS-PSC catalog. You should rename the file starname\_2MASS.txt, where 'starname' is the name of the star system you're doing this for.
+\item From the terminal, change directories to the directory in which you've saved the catalog. The first step is to remove the information that isn't important to us. All we need is the RA, DEC, and magnitude, columns 1,2 and 7. To do this launch idl and type:
+\begin{verbatim}
+IDL> makecatalog, 'starname_2MASS.txt', 'starname_cat.txt'
+\end{verbatim}
+This IDL procedure reads in the RA, DEC, and magnitude information from the 2MASS file, converts the RA and DEC from decimal degrees to hh:mm:ss and dd:mm:ss respectively using the unix skycoor command, and finally prints the information to the designated output file.
+\item Move the starname\_cat.txt file to the following directory: /home/depot/STEPUP/code/catalogs
+\item Example finished catalog:
+\begin{verbatim}
+/J2000/N
+07:14:59.193 +14:02:38.22         15.771
+07:14:58.070 +14:02:56.04	        9.178
+07:14:51.435 +14:03:25.54	        16.448
+07:15:06.684 +14:03:17.97	        15.891
+07:15:06.737 +14:02:55.28	        16.388
+07:15:06.254 +14:03:25.40	        16.629
+07:15:04.858 +14:03:03.75	        16.668
+...
+\end{verbatim}
+\end{enumerate}
+
+\newpage
+
+\section{The old method}
+This is how we used to make catalogs. The end result is the same, but the former method is much easier and less prone to errors.
+
+
+\begin{enumerate}
+\item
+\begin{verbatim}
+awk '{print $1, $2, $7}' starname_2MASS.txt > newfile.txt
+\end{verbatim}
+ Where newfile.txt is a temporary file that will be removed at the end
+\item Now we're going to want to convert the RA and DEC from decimal degrees to hh:mm:ss and dd:mm:ss respectively. The skycoor command in unix will do this. So in the command line type: 
+\begin{verbatim}
+skycoor @newfile.txt > newfile2.txt
+\end{verbatim}
+\item Now we're going to want to create a temporary file that has the magnitude information. Type: 
+\begin{verbatim}
+awk '{print $3}' newfile.txt > newfile3.txt
+\end{verbatim}
+\item Next we'll remove the epoch information from the newfile2.txt, since we don't need it. Type: 
+\begin{verbatim}
+awk '{print $1, $2}' newfile2.txt > newfile4.txt
+\end{verbatim}
+\item Now we're going to put the coordinates with the magnitudes into a final text file. Type: 
+\begin{verbatim}
+paste newfile4.txt newfile3.txt > starname_cat.txt
+\end{verbatim}
+Where 'starname' is the name of the star. At this point you can delete all of the newfiles you created by typing:
+\begin{verbatim}
+ rm newfile* 
+\end{verbatim}
+\item Now we need to make it so that the analysis modules know what epoch we're in, so open the file in a text editor, and delete the first two lines. Then type on a new line at the top: \textbf{/J2000/}
+
+\noindent Example terminal entry for steps 5 through 9:
+\begin{verbatim}
+awk '{print $1, $2, $7}' Bellona.txt > newfile.txt
+skycoor @newfile.txt > newfile2.txt
+awk '{print $3}' newfile.txt > newfile3.txt
+awk '{print $1, $2}' newfile2.txt > newfile4.txt
+paste newfile4.txt newfile3.txt > Bellona_2011-02-10_cat.txt
+rm newfile*.tx
+\end{verbatim}
+
+\end{enumerate}
+
+\section{Obtaining a mini-catalog}
+\begin{enumerate}
+\item Find the RA and DEC for the target star, along with two reference stars. Generally these will be of the form hr:min:sec and deg:min:sec respectively, however you will want to convert to decimal form. This can be done manually with the skycoor command. Type:
+\begin{verbatim}
+skycoor -d hh:mm:ss dd:mm:ss
+\end{verbatim}
+\item Next you will want to create a text file that contains the RA and DEC of all the stars. You will want the first reference star to be on top, the target next, then the second reference star on the bottom
+\item Save the text file as starname\_mini.txt
+\item Then save the file, and move it to the following directory: /home/depot/STEPUP/code/catalogs
+\end{enumerate}
+
+\noindent Example mini-catalog:
+\begin{verbatim}
+129.82383 47.37334
+129.88267 47.35212
+129.82733 47.40897
+\end{verbatim}
+
+\end{document}

@@ -1,0 +1,83 @@
+\documentclass[12pt, preprint]{aastex}
+
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{textcomp}
+
+\begin{document}
+
+\title{How To Plan Known Transit Observations}
+\author{Melanie Good}
+\date{2011 May}
+\emph{updated 2014 January}
+
+\section{Strategy}
+
+One of the STEPUP objectives is to gather follow-up data on know planetary systems. We can strategically plan our observing in order to meet this objective by using some online resources. For planets that are known to transit, the reccommended website is called Exoplanet Transit Database.  For planets that were discovered by other techniques and are not yet known to transit, the reccommended website is called Transitsearch.  Each of these two sites has its advantages and disadvantages which makes them more useful for the particular application of either known or unknown transiting systems.  Either way, the general strategy you want to follow is this:
+
+\begin{enumerate}
+\item Choose a target then plan a night to observe or alernatively, choose the night you can observe and find the best target for that night.Considerations for choice of target:
+
+\begin{enumerate}
+\item Magnitude (V) should be between 7 and 12
+\item Transit depth (dv) should be at least 0.4\% (bigger is better)
+\item The duration of the transit should easily fit within your observing timeframe. The larger this number the longer you will have to stay up.
+\item The altitude of the star should be above 20\textdegree. The higher the altitude the less atmosphere we have to look through to see the star.
+\end{enumerate}
+
+\item Use one of the websites to dermine when to begin and end observing.  You want to get some data both before the transit begins and after the transit ends. An hour is a good goal.
+
+\item Obtain an image of the star field with the target marked so that you can identify it when you observe and keep it as close to the center of the field of view as possible. Many of these should be in the binder in Allen 302 along with any notes about tracking stars that have been used in the past.  If not, star field images are automatically available on Exoplanet Transit Database or can be found using Aladin. If STEPUP has not previously observed the target, you might be also able to pick out a few stars that could serve as a tracking star if you find an image of roughly the same size as our field of view.  If you are unable to find a tracking star before observing, be sure to take careful note of the tracking star in your observing report so that it can be used for future observations.
+\end{enumerate}
+
+\section{Exoplanet Transit Database for Known Transiting Planets}
+
+Here are the basic steps to follow to use Exoplanet Transit Database (ETD):
+
+\begin{enumerate}
+\item Go to \url{http://var2.astro.cz/ETD/}
+
+\item Click on ``Transit Predictions''  near top
+
+\item Input our latitude and longitude.  Note that it is *East* Longitude!!  For our purposes, it's good enough to input 280 degrees ELongitude and 40 degrees Latitude.  Press the ``submit'' button.
+
+\item You will see a chart of predicted transits, along with  the duration of the transit, magnitude of the target star, depth of magnitude, and coordinates.  Above that are several upcoming dates you can click on to change the chart to a different night's predictions so you can plan your next observing night accordingly.``Begin'' is approximately when you can expect the transit to start.  ``center'' is the approximate mid-transit time, and ``end'' should be when the transit is done. Times are in UT, which for summer is 4 hours later than our local time and for winter 5 hours later than our local time.  So to find the mid-transit time in local time, subtract the appropriate number of hours from the time listed in these columns.
+
+\item Once you choose your target (keeping in mind our strategy for target choices), you can click on the object name and you will see an image of what the star field looks like and which star is the target.  Below that is a year's worth of predicted transits, complete with colors to indicate observability at our location.  Grey times indicate the star is not rising above 20 degrees above the horizon, yellow times indicate the transit is taking place during the day, and black times indicate the  star is above 20 degrees and the transit takes place at night in our location.  This is helpful in planning future observations.
+\end{enumerate}
+
+\section{Planets Not Yet Known To Transit with Transitsearch}
+
+Following up on planets not yet known to transit is a secondary objective.  Should you choose such observations, the planning processs is less user-friendly.  Transitsearch used to have a similar functionality to ETD where you would input your local latitude and longitdue and it would give you some predictions.  However, it now only consists of charts that you must wade through to plan your observing, and there are a few bugs that remain with it.  This should not dissuade you because Transitsearch is still a useful tool if you want to prioritize which targets to look for a transit for based on their probability of transiting (which is included in the charts).
+
+Here are the basic steps to follow to use Transitsearch:
+
+\begin{enumerate}
+\item Go to \url{http://www.transitsearch.org/}
+
+\item Click on ``Candidates'' to make an interactive table appear
+
+\item Understand each column to help plan which target to observe when:
+
+\begin{itemize}
+\item First three columns are pretty self-explanatory; they identify the target by name and tell you its orbital period
+
+\item Fourth column tells you the probability that the planet transits.  100\% means it is a known transiting planet.  Other percentages are based on the geometric probability that a system that has not yet been shown to transit actually does transit.
+
+\item Columns five and six give you the coordinates of the target
+
+\item Column seven tells you the depth the transit ought to have (as a percentage).  We know we can detect a 1\% transit depth and possibly a little less but if this number is less than ~0.5\%, it's unlikely we could detect it.
+
+\item Column eight tells you the predicted mid-transit time for the soonest transit from now.  This time is in UT, which for now is 4 hours later than our local time.  After we set our clocks back in the fall this will become 5 hours later than our local time.  So to find the mid-transit time in local time, subtract the appropriate number of hours from the time listed in this column.
+
+\item Column nine tells you if the transit is taking place during the day or night.  ``In'' means it is taking place at night; ``out'' means it is taking place during the day.  But be careful because I have found marginal cases that would actually be observable even though they are labeled ``out,'' as I think these designations are based on the west coast (since Greg Laughlin, who maintains the site, is located at UC Santa Cruz).  So don't rule out a possible target just based on this column--take a more careful look at column eight.
+
+\item The tenth column is probably one of the most useful columns.  By clicking on this column you will be given a detailed chart of the timing of each transit (ie. an ``ephemeris'') from about a year ago to about a year from now.  In addition to HJD the dates and times are listed, again all in UT so you must subtract hours if you want to know them in local time.  The ``begin transit window'' is approximately when you can expect the transit to start.  ``Predicted central transit'' is the approximate mid-transit time, and ``end transit window'' should be when the transit is done.  Ideally you'd like to get some data before the beginning of the transit and after the end of it.  The transit duration is listed at the top.  
+
+\item Also be careful with these ephemeris pages.  I have recently clicked on a few where, instead of the times following the three columns they should, it appears that the left-hand column starts at one date chronologically until it fills that column and then the second column is a continuation of the bottom of the first column.  Instead of telling you the whole transit window, all you are given is the mid-transit time for that particular date.  If you encounter one of these faulty ephemeris pages, you can get a rough idea of when the beginning of the transit is by looking at the transit duration and assuming that subtracting half the total duration off the mid-transit time ought to give you the beginning of the transit, and adding half the total duration to the mid-transit time should give you the end of the transit window.  Please email the list when you encounter such pages, as we may want to alert Greg Laughlin of these bugs.
+\end{itemize}
+
+\item Once you are familiar with these columns you can see that you can use them to either look for a particular night you are observing and see what might be a good target, or choose a target and then look for the next predicted transiting evening, and plan your future observing accordingly.
+\end{enumerate}
+
+\end{document}

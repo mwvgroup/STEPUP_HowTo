@@ -1,0 +1,587 @@
+\documentclass[10pt,preprint]{aastex}
+
+\usepackage{verbatim}
+\usepackage{graphicx}
+
+\begin{document}
+\title{A Guide To Analyzing Exoplanet Transit Data Using \textit{generaltransitall.pro}}
+\author{Daniel Whitehurst}
+\date{March 2011}
+\emph{updated May 2015}
+\emph{original version by Eric Roebuck and Gwen Weaver}
+
+\tableofcontents
+\clearpage
+
+
+\section{Prerequisites}
+
+Before you proceed make sure you have already done the following steps:
+
+\begin{itemize}
+\item Observed a transit. 
+	See \emph{How To Plan Observing} and \emph{How To Observe} 
+\item Transfered the data. 
+	See \emph{How To Transfer Data}
+\item Created a catalog if the target star has not been previosly observed by STEPUP.
+	See \emph{How To Make a Catalog}
+\end{itemize}
+
+\section{Creating a Batch File}
+
+Create a batch file with the convention \emph{starname\_dateobserved\_batch.pro}. It does not matter
+ where you save this batch file since the procedure has been set up to look in all the proper 
+folders. However, we prefer you save it in /home/depot/STEPUP/code/GeneralTransitProcedures/batchfiles with the other batchfiles.
+
+In this batch file you will first need to specify the following inputs.
+
+\textbf{STAR}- 
+The name of the star that appears in both the filename of the images and also the directoires in which the raw data has been stored: \emph{e.g. 'HAT-P-24'}
+
+\textbf{DATE}-
+ The date the system was observed: \emph{e.g. '2014-03-26'}
+
+\textbf{XPIXEL}- 
+The x pixel location of the target star in the first decent image: \emph{e.g. 1515}
+
+\textbf{YPIXEL}- 
+The y pixel location of the target star in the first decent image. Note: Due to the nature of the telescope, our raw images are "upside-down" compared to the starfield from Aladin. Thus, in order to obtain the correct y-pixel you must invert y when viewing the starfield image in atv. \emph{e.g. 1139}
+
+\textbf{RATARGET}- 
+The right ascension of the target serparated by colons:\emph{e.g. '07:15:18.02'}
+
+\textbf{DECTARGET}- 
+The declination of the target separated by colons: \emph{e.g. '14:15:45.4'}
+
+\textbf{FILTER}- 
+The abbreviation for the filter used during observation: \emph{e.g. 'r'}
+
+The following are optional inputs:
+
+\textbf{Q}- 
+The letter Q is a number that tells GT where to being; 0 for full analysis is assumed if not
+ provided in batch file, 1 to start after calibration, 2 to start right before data analysis
+, and 3 to start right before the fitting procedure \emph{e.g. 2}
+
+\textbf{STARCALIB}-  
+Star name of the folder in which you are obtaining calibration images. \emph{e.g. 'KELT-3'}
+
+\textbf{DATECALIB}- 
+Date of the folder in which you are obtaining calibration images. \emph{e.g. '2014-02-07'}
+
+\textbf{DARKMONTH}-
+The year and month of the dark images you want to use: \emph{e.g. 2014-02}
+
+After listing your inputs, you must call the sequence at the bottom of the batch file. This looks
+like:
+\begin{verbatim}
+generaltransitall, star, date, xpixle, ypixel, RAtarget, DECtarget, filter, q=q,
+starcalib=starcalib, datecalib=datecalib, darkmonth=darkmonth
+\end{verbatim}
+
+A sample batch file looks like this:
+
+\begin{verbatim}
+;HAT-P-24_2014-03-26_batch.pro
+
+star='HAT-P-24'
+date='2014-03-26'
+xpixel=1515
+ypixel=1139
+RAtarget='07:15:18.02'
+DECtarget='14:15:45.4'
+filter='r'
+q=2
+starcalib='KELT-3'
+datecalib='2014-02-07'
+darkmonth = '2014-02'
+
+generaltransitall, star, date, xpixel, ypixel, RAtarget, DECtarget, filter, q=q, 
+starcalib=starcalib, datecalib=datecalib, darkmonth=darkmonth
+
+EXIT
+\end{verbatim}
+
+Save your batch file. 
+
+\emph{Note: If you do NOT have calibration images for the night see Appendix}
+
+\emph{Note: If you know you have bad images, remove them using badimages.txt. See Appendix}
+
+
+\section{Running the Procedure}
+From the directory in which you have saved the batch file you will now run it from the UNIX terminal 
+as follows:
+
+\begin{verbatim}
+idl starname_dateobserved_batch.pro > & starname_dateobserved.log &
+\end{verbatim}
+
+This runs the procedure in the background of the computer so that you do not have to keep the terminal 
+open while the procedure finishes.You have also created a log file of the terminal output that will be 
+useful for later reference. Note: if this is your second or third time trying to analyze the data name the 
+log file something different so you don't overwrite the original one.
+
+\section{Tailing the Program}
+To view the program while it is running, type the following into the UNIX terminal:
+
+\begin{verbatim}
+tail -f starname_dateobserved_batch.log &
+\end{verbatim}
+
+To exit type \textbf{Crtl} + \textbf{z}, and this will return you to the terminal. 
+None of the above commands will disrupt the running of your program. 
+\emph{Note: To terminate your process please see the Appendix}
+
+\section{\textbf{Stored Data}}
+When the program has finished running, all of the output data will be stored in
+
+\begin{verbatim}/home/depot/STEPUP/workspace/star/date\end{verbatim}
+
+This output data includes:\\
+
+\begin{itemize}
+\item Calibrated Images: \emph{star\_001r.fit}
+\item List of stars found for astrometry: \emph{star\_001r.fit.cat}
+\item Fitted lightcurve: \emph{star\_date\_boxfit.pdf}
+\item Corrected flux data: \emph{star\_date\_correctedflux.dat}
+\item Raw photometry data: \emph{star\_date\_phluxinfo.btab.fits}
+\item Raw photometry with bad images cut: \emph{cutphluxinfo.btab.fits}
+\item Corrected flux data formatted for upload to the Exoplanet Transit Database: \emph{star\_date\_ETD.dat}
+\item A list of times when the telescope was refocused: \emph{star\_date\_focustimes.txt}
+\item A plot of the lightcurve, airmass and FWHM: \emph{star\_date\_fwhm-airmassplot.pdf}
+\item A plot of the lightcurve: \emph{star\_date\_lightcurve\_flux.pdf}
+\item A printout of how well the astrometry worked: \emph{wcsinfo.txt}
+\item Master bias image: \emph{masterbias.fits}
+\item Master dark image: \emph{masterdark.fits}
+\item Master flat image: \emph{masterflat.fits}
+\item Table of residuals from getpsf: \emph{residual.fit}
+
+\end{itemize}
+
+\clearpage
+
+\section{Appendix}
+
+\subsection{Lacking Calibration Images?}
+
+If you do not have calibration images for the night you are analysing, you can add the optional inputs \textbf{STARCALIB} and 
+\textbf{DATECALIB} to your batch file. These varibales refer to a different star/night which \emph{do} have calibration images.
+ Be sure to choose a night close to the one you are observing so that conditions are relatively the same. 
+
+\subsection{Removing Bad Images with badimages.txt}
+
+If there are certain images that you know are bad here is how you can keep the program from analyzing them. Create a text file called badimages.txt in the raw directory with all of the raw images. In it, type the name of bad images. This will keep the program from using theses images. Here is an example: 
+
+\begin{verbatim}
+TrES-2-001r.fit
+TrES-2-002r.fit
+TrES-2-003r.fit
+\end{verbatim}
+
+\subsection{Darkmonth explained}
+Starting in 2014 STEPUP switched from taking dark images during with every observation to taking long exposure darks once a month. GeneralTransitAll will run with both the traditional dark method and the new 2014 dark method. Here is how:
+
+
+\textbf{Scenario 1:} You have dark images in your star's raw folder (/home/depot/STEPUP/raw/star/date) i.e. pre-2014 data
+
+Call GeneralTransitAll like normal, leaving off the darkmonth input.
+\begin{verbatim}
+generaltransitall, star, date, xpixel, ypixel, RAtarget, DECtarget, filter
+\end{verbatim}
+
+\textbf{Scenario 2:} You want to use calibration images of another star, including the dark images
+
+Call GeneralTransitAll with starcalib and datecalib, leaving off the darkmonth input.
+\begin{verbatim}
+generaltransitall, star, date, xpixel, ypixel, RAtarget, DECtarget, filter,
+starcalib=starcalib, datecalib=datecalib
+\end{verbatim}
+
+\textbf{Scenario 3:} You have the 30 min darks in the dark folder (/home/depot/STEPUP/raw/Calibration/Dark/date) and the rest of your calibrations in the stars folder. i.e. Normal 2014+ star 
+
+Call GeneralTransitAll with darkmonth
+\begin{verbatim}
+generaltransitall, star, date, xpixel, ypixel, RAtarget, DECtarget, filter,
+darkmonth=darkmonth
+\end{verbatim}
+
+\textbf{Scenario 4:} You have 30 min darks in the dark folder and you want to use calibration images of another star.
+
+Call GeneralTransitAll with starcalib, datecalib, and darkmonth
+\begin{verbatim}
+generaltransitall, star, date, xpixel, ypixel, RAtarget, DECtarget, filter,
+starcalib=starcalib, datecalib=datecalib, darkmonth=darkmonth
+\end{verbatim}
+
+In summary, in dealing with pre-2014 data, just ignore the darkmonth keyword. In dealing with 2014 data and beyond, use darkmonth to specify the darkmonth and use starcalib and datecalib as usual.
+
+\subsection{Killing a Procedure}
+
+Although the procedure may return you all of the correct outputs and data, it may not terminate properly. Once you have checked your 
+outputs and data have been properly compiled and stored, type the following into the UNIX terminal:
+\begin{verbatim}top
+\end{verbatim}
+
+you will see something like the following:
+
+\begin{verbatim}
+ PID    USER    PR  NI  VIRT  RES  SHR S  %CPU  %MEM    TIME+  COMMAND 
+                                                       
+17831 ads92     25   0 2482m 2.4g 7788 R 97.8 29.9 334311:09 gnome-panel    
+                                                
+18728 neh17     25   0 85816  27m 9360 R 97.8  0.3  21552:26 idl                                                            
+
+24238 mlg52     25   0  156m 100m 9860 R 97.8  1.2  20229:10 idl                                                            
+
+    1 root      15   0  2156  640  552 S  0.0  0.0   0:02.60 init                                                           
+
+    2 root      RT  -5     0    0    0 S  0.0  0.0   0:00.08 migration/0                                                    
+
+    3 root      39  19     0    0    0 S  0.0  0.0   0:00.01 ksoftirqd/0                                                    
+
+    4 root      RT  -5     0    0    0 S  0.0  0.0   0:00.00 watchdog/0                                                     
+
+    5 root      RT  -5     0    0    0 S  0.0  0.0   0:00.10 migration/1                                                    
+
+    6 root      39  19     0    0    0 S  0.0  0.0   0:00.03 ksoftirqd/1   
+
+\end{verbatim}        
+
+In this example Nelson, neh17, has a runaway idl procedure. A runaway idl procedure will have a time in the 1000+
+
+
+\begin{verbatim}
+18728 neh17     25   0 85816  27m 9360 R 97.8  0.3  21552:26 idl 
+\end{verbatim}
+
+
+To stop this program running first type \textbf{Ctrl} + \textbf{z}, which returns you to the UNIX terminal. Then type 
+\textbf{kill 18728}, where \emph{18728} is the \textbf{PID} number listed on the far left.  
+
+\section{Troubleshooting}
+So, you thought you did everything right. You observed, you made a catalog, you assembled a batchfile and ran generaltransitall, but alas, no lightcurve. Something went wrong, the question is what? Generaltransitall and all of its procedures combined is a 1000+ line program that has been stitched together over many years by many different people. Lucky for you, in its current version generaltransitall is pretty stable. That being said, it will probably only work on the first try about 50\% of the time. Here is how to get it to work on that second, third or possibly fourth try.
+
+\subsection{Interpreting The Log File} 
+When you ran generaltransitall, you hopefully created a log file. This is your key to troubleshooting generaltransitall.pro. Now, log files can get pretty disgustingly large. I've seen ones that are several million lines long, but don't worry, most of it is repetitive and I'll show you the important parts. Here is an example first section:
+
+\begin{verbatim}
+IDL Version 8.1 (linux x86 m32). (c) 2011, ITT Visual Information Solutions
+Installation number: 218208-1.
+Licensed for use by: University of Pittsburgh
+
+% Compiled module: GENERALTRANSITALL.
+grep -i focus /home/depot/STEPUP/raw/HA-P-24/2014-03-26/*obsreport* | grep telescope | 
+sed -e 's/.*\(20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]\).*:\([0-9][0-9]*:[0-9][0-9][ap]m\).*/\1 \2/' 
+> /home/depot/STEPUP/workspace/HAT-P-24/2014-03-26/HA-P-24_2014-03-26_focustimes.txt
+grep: No match.
+Image Directory:/home/depot/STEPUP/raw/HA-P-24/2014-03-26/
+Calibration Directory:/home/depot/STEPUP/raw/KELT-3/2014-02-07/
+Dark Directory:/home/depot/STEPUP/raw/Calibration/Dark/2014-02/
+\end{verbatim}
+
+grep -i focus ... This is simply searching thorugh the observing report to find out if the telescope ever was refocused. Not important. Usually, as in this case, it didn't find anything.
+
+Image/Calibration/Dark Directory ... This is just the program letting you know where it searched for images. If the batchfile ends in the next few lines with a phrase such as "Analysis halted, Could not find bias/dark/flat/images, Please specify..." you probably made a typo in your batchfile or the directory in which you put the images. Check to make sure that there are actually images where the program is looking.
+
+Next, the program goes on to print out all the images it will use for data analysis. It then compiles some modules and loads the calibration images into arrays with MRDFITS. Not particulary important. Scroll down until you see something like this:
+
+\begin{verbatim}
+Star     X       Y      Sky        Magnitudes
+% Compiled module: STRN.
+% APER: WARNING - 3 star positions outside image
+    0   -1.00   -1.00   0.00   99.999+-9.999
+% Compiled module: MMM.
+    1  395.08   11.60 619.84   14.817+-0.044
+    2 1830.18   12.62 618.58   14.567+-0.033
+    3  559.53   13.72 617.07   15.178+-0.062
+    4 2971.70   13.89 631.81   18.194+-0.932
+    5 2928.65   18.30 632.81   14.834+-0.041
+    6 1924.42   20.42 618.96   12.623+-0.006
+    7 2249.71   19.85 616.87   14.436+-0.028
+\end{verbatim}
+
+This list contains all the stars that aper (an idl procedure) could find in your image and their approximate magnitude. Don't worry if several stars are "outside image". That is normal. Also, don't worry if the program can't find a magnitude for some stars. That is also normal and perfectly okay. This list of stars is printed out into the fit.cat file that you see in the workspace folder of your star. This will probably be a long list. Scroll through it until you get to:
+
+\begin{verbatim}
+imwcs -v -e -c /home/depot/STEPUP/code/catalogs//HAT-P-24_cat.txt -d /home/depot/STEPUP/workspace
+/HAT-P-24/2014-03-26/HAT-P-24-001r.fit.cat -t 20 -x     1515     1139 -j 07:15:18.02 14:15:45.4 -q 
+it -h 50 -r 180 -l -p 0.6 -o /home/depot/STEPUP/workspace/HAT-P-24/2014-03-26/HAT-P-24-001r.fit /home
+/depot/STEPUP/workspace/HAT-P-24/2014-03-26/HAT-P-24-001r.fit
+imwcs WCSTools 3.7.7, 03 April 2009, Doug Mink (dmink@cfa.harvard.edu)
+Set World Coordinate System in FITS image file /home/depot/STEPUP/workspace/HAT-P-24/2014-03-26/
+HAT-P-24-001r.fit
+DelWCSFITS: No WCS in header
+RotWCSFITS: No WCS in header
+Copy of image HAT-P-24-001r.fit reflected, rotated 180 degrees
+Reference pixel (1515.00,1139.00) 07:16:20.475 +14:04:21.79 J2000
+Search at 07:15:17.133 +14:14:36.70 J2000 +- 00:01:03.438 +00:10:14.94
+Image width=3072 height=2048, 3.89242e-270 arcsec/pixel
+SearchLim: RA: 07:14:13.695 - 07:16:20.571  Dec: +14:04:21.76 - +14:24:51.64
+CTGREAD:    99 /   100 /   114 sources catalog /home/depot/STEPUP/code/catalogs//HAT-P-24_cat.txt
+CTGREAD: Catalog /home/depot/STEPUP/code/catalogs//HAT-P-24_cat.txt : 112 / 115 / 114 found
+CTGREAD: 112 stars found; only 50 returned
+Using 50 / 112 reference stars brighter than 12.9
+/home/depot/STEPUP/code/catalogs//HAT-P-24_cat.txt:
+\end{verbatim}
+
+This is imwcs, the magical program that takes the catalog you created and matches it up with the stars in the image. Imwcs accounts for over 50\% of the text in the batchfile, and is argueably the weakest link of the program. 75\% of all program errors are going to occur here. Let me try and explain what is going on.  First, the imwcs is called. That is the imwcs -v -e -c ... . Then it prints out some information about what it is doing to the image.  Next it gets to the CTGREAD. This reads in the stars from the catalog you created. It then returns the brightest stars to be used for matching. It will use the 50 brightest stars. These stars are then printed out. In order, the columns are, star number in catalog, RA, DEC, magnitude, calculated corresponding x-pixel and calculated corresponding y-pixel. After this list you should get to this:
+
+\begin{verbatim}
+DAOREAD: Catalog /home/depot/STEPUP/workspace/HAT-P-24/2014-03-26/HAT-P-24-001r.fit.cat :
+ 243 / 244 / 243 found
+Using brightest 50 / 112 reference stars
+Using brightest 50 / 243 image stars
+\end{verbatim}
+
+DAOREAD is reading in the stars from the fit.cat file. It then selects the 50 brightest of these stars and prints them out. In sumary, imwcs selects the 50 brightest stars from your catalog, and the 50 brightest stars that aper found in your image. Now, it tries to match them up. In the process of matching them up,  imwcs will spit out hundreds of lines of text. You can ignore all of this. Scroll down until you see:
+
+\begin{verbatim}
+# Mean  dx= -0.1268/0.3461  dy= 0.2735/1.1075  dxy= 0.7303
+# Mean dra= 0.0731/0.1996  ddec= 0.1576/0.6380 sep= 0.4208/0.6685
+# nmatch= 49 nstars= 50 between /home/depot/STEPUP/code/catalogs//HAT-P-24_cat.txt and /home/depot/
+STEPUP/workspace/HAT-P-24/2014-03-26/HAT-P-24-001r.fit.cat  niter= 3
+/home/depot/STEPUP/workspace/HAT-P-24/2014-03-26/HAT-P-24-001r.fit: written successfully.
+
+MRDFITS: Image array (3072,2048)  Type=Int*2
+% GCNTRD: Position 3063.38 2.24246 too near edge of image
+% GCNTRD: Position 2242.39 2046.39 too near edge of image
+
+ Star     X       Y      Sky        Magnitudes
+% APER: WARNING - 2 star positions outside image
+    0   -1.00   -1.00   0.00   99.999+-9.999
+    1  392.74   10.97 618.50   14.682+-0.035
+    2 1828.19   11.79 620.92   14.615+-0.033
+\end{verbatim}
+
+These lines of code signal that imwcs has finished with the image and processing of the next image has begun. This is where you can tell if imwcs did its thing and matched up the RA and DECs of your catalog to the image. See where it says \emph{\# nmatch = 49 nstars =50}? This is how successful imwcs was at matching the stars from the catalog with the stars that aper found. In this case, it got 98\% of them, which is really good! If, however, you see something like \emph{\# nmatch = 19 nstars =50}, then you know something went wrong. Occasionally, if aper is having trouble finding stars (usually due to the image being out of focus, poorly calibrated, or streaky) you'll see something like \emph{\# nmatch = 11 nstars = 13}. This is okay as well. It's not great, but if nmatch is pretty close to nstars you should be good. Also, sometimes you will see something like \emph{\# nmatch = 51 nstars =50}. I'm not quite sure how this works, but its generally an indication of a really good match. 
+
+	Fortunately for you, generalttransitall produces a file called wcsinfo.txt in the workspace directory. This file contains the imwcs information for all the images, so you don't have to go scrolling throgh possibly millions of lines of text to find a couple numbers. The first column of this file is SEP. SEP is simply a measure of how well the imwcs could fit the image. Under 0.5 is good while under 1.5 should work. Anything over that and the program will have difficulty with that image later. MATCHES and NREF are simply nmatch and nstars from earlier.
+
+The best and most definitive way to check that imwcs is working is to open up one of the calibrated image files produced in the workspace directory. Open the image in atv and see if the RA and DEC information agrees with what Aladin says it should be. The correct RA and DEC don't have to be perfectly centered in the star, but they  should be within the star's radius on the image.
+
+Now you have to scroll through all of the imwcs output to get to the next section. It will look like this:
+
+\begin{verbatim}
+% Compiled module: GTPHLUXALL.
+% Compiled module: FOVCUT.
+MRDFITS: Image array (3072,2048)  Type=Real*4
+% Compiled module: READCOL.
+% Compiled module: REMCHAR.
+% READCOL: Skipping Line 1
+% Compiled module: STRNUMBER.
+% READCOL: 115 valid lines read
+% Compiled module: TEN_STRING.
+% Compiled module: TEN.
+% Compiled module: EXTAST.
+% Compiled module: ZPARCHECK.
+% Compiled module: GET_EQUINOX.
+% Compiled module: DATE_CONV.
+% Compiled module: YDN2MD.
+% Compiled module: JULDATE.
+% Compiled module: AD2XY.
+% Compiled module: TAG_EXIST.
+% Compiled module: MAGCUT.
+% Compiled module: GTPHLUXOMETRYALL.
+MRDFITS: Image array (3072,2048)  Type=Real*4
+       499.65476       1025.4723
+       539.41344       1074.3981
+       550.03369       855.56699
+       573.10691       1324.3965
+       699.24461       975.14670
+       723.68095       1207.6169
+       753.64407       1276.1827
+       765.99761       459.55845
+\end{verbatim}
+
+Now the program has started photometry. Just becuase the program made it this far doesn't mean it didn't mess up earlier. The two columns are the x and y pixel of the stars the program is going to perform photometry on. They are sorted by x-pixel. Try and find the target star in the list. It might be a pixel or two off from what you inputted in the batch file. This is normal as there are always some slight errors when converting from RA \& DEC to x \& y pixel. At the bottom of the list you will probably see a handful of GCNTRD errors. This is normal. The next list comes from aper calculating the flux of the stars from the list of x \& y pixels. A couple NAN fluxes are normal here as well. Then comes GETPSF, which gets information about the nature of the star's spread for use in calculating its fwhm. GETPSF will probably error a lot. This is normal. GETPSF is trying to calculate the FWHM of every star in the image, which it tends to fail for the dimmer stars. The FWHM data is not essential for data analysis, which is why we aren't overly concerned about GETPSF's struggles. Additionally, you don't need every star to have a valid flux in every image for analysis to work. As long as you have a few good stars it will work just fine. This output will repeat for every image. There is nothing really important here other then to make sure that the at least some of your stars have valid flux. Keep scrolling until you hit:
+
+\begin{verbatim}
+% Compiled module: GTDATAANALYSIS.
+MRDFITS: Binary table.  12 columns by  1 rows.
+** Structure <9ad7784>, 12 tags, length=102568, data length=102568, refs=1:
+   FLUX            FLOAT     Array[80, 42]
+   FLUXERR         FLOAT     Array[80, 42]
+   SKYS            FLOAT     Array[80, 42]
+   SKYSERR         FLOAT     Array[80, 42]
+   FWHM            FLOAT     Array[1, 42]
+   FWHMARRAY       FLOAT     Array[80, 42]
+   XSTARS          FLOAT     Array[80, 42]
+   YSTARS          FLOAT     Array[80, 42]
+   DCATRA          DOUBLE    Array[80]
+   DCATDEC         DOUBLE    Array[80]
+   CATMAGS         FLOAT     Array[80]
+   GOODBAD         INT       Array[80, 42]
+Target star found at location      685.539,      167.014
+Target star number:       8
+\end{verbatim}
+
+This is where data analysis begins. Check to make sure that it found the correct star. If the target star location does not closely correspond to the x \& y pixel you inputted then imwcs most likely messed up. If you have bad image(s) the program will automatically take them out and you will get a message like this:
+
+\begin{verbatim}
+ALERT: THERE ARE BAD IMAGES IN THE DATA
+TARGET STAR HAS NAN FLUX:
+/home/depot/STEPUP/raw/WASP-16/2015-04-28/WASP-16-007r.fit
+/home/depot/STEPUP/raw/WASP-16/2015-04-28/WASP-16-008r.fit
+/home/depot/STEPUP/raw/WASP-16/2015-04-28/WASP-16-010r.fit
+IMAGE CONTAINS FEW GOOD STARS
+/home/depot/STEPUP/raw/WASP-16/2015-04-28/WASP-16-004r.fit
+\end{verbatim}
+
+If you know there were portions of the night where you lost focus, clouds rolled in, or you overexposed the target star, then you should expect several of these. The program will automatically remove images where your target star has an invalid flux or most of the stars in the image have an invalid flux. If it seems that most of your images are bad, then imwcs probably messed up. The program will now list the images that it is using and how many stars had valid flux in each of the images. 
+
+\begin{verbatim}
+Images used in Data Analysis
+   Image Name      Image Number   Valid Flux Stars
+/WASP-16-001r.fit           0      71.0000
+/WASP-16-002r.fit           1      72.0000
+/WASP-16-003r.fit           2      73.0000
+/WASP-16-005r.fit           4      78.0000
+/WASP-16-006r.fit           5      76.0000
+/WASP-16-009r.fit           8      77.0000
+/WASP-16-013r.fit          12      78.0000
+/WASP-16-015r.fit          14      78.0000
+/WASP-16-016r.fit          15      78.0000
+\end{verbatim}
+
+\begin{verbatim}
+star number    stddev     %fluxerr   valid images
+       0         -NaN         -NaN      0.00000
+       1      3.94216    0.0671649      2.00000
+       2         -NaN         -NaN      0.00000
+       3      2.11429    0.0779886      22.0000
+       4      1.81431    0.0852860      40.0000
+       5      5.67378    0.0799340      3.00000
+       6      12.3901     0.146852      64.0000
+       7      13.7999     0.111788      64.0000
+       8      2.15966     0.121072      62.0000
+       9      11.5132     0.193684      64.000
+\end{verbatim}
+
+The table labled star number, stddev, fluxerr and valid images shows the results of the data analysis. The stddev is a measure of how consistent a star's flux stays with respect to the other stars over the course of the night, and the fluxerr is simpy aper's measure of uncertaintiy when calculating flux. Valid images is the number of images that particular star had a valid flux in. At the bottom of this table is another, smaller table. This table shows which stars the program has selected to use as reference for making the lightcurve and some information on them.  It then shows the same stats for the target star.
+
+\begin{verbatim}
+star number   x pixel      y pixel      magnitude   avg STDDEV  avg %FLUXERR  valid images
+       8      1136.19      200.116      10.8120      2.15966     0.121072      62.0000
+      19      540.988      1075.17      11.8930      10.8950     0.268608      64.0000
+      48      2519.77      1177.11      12.7690      10.8773     0.527928      64.0000
+Total stars used for flux correction       3
+target star:
+       7      1514.90      1139.02      10.7970      13.7999     0.111788      64.0000
+
+\end{verbatim}
+
+This part of the data analysis procedure is very robust, so if the program failed here then imwcs probably messed up earlier in the program. See the troubleshooting imwcs section for help with that.
+
+The rest of the output comes from the plotting of the data. There will probably be a lot of errors involving font files. This is normal. Next you will see this: 
+
+\begin{verbatim}
+Iter      1   CHI-SQUARE =       16600.339          DOF = 60
+    P(0) =             0.634760
+    P(1) =            0.0107950
+    P(2) =            0.0800000
+    P(3) =              1.02000
+    P(4) =              1.00000
+\end{verbatim}
+
+This comes from fitting a line to the lightcurve. CHI-SQUARE is a measure of how well the fitting is going. For a good fit, CHI-SQUARE should end up below 100, but under 500 is still good if you have messy data. P(0) through P(4) are the current values of the midtransit time, depth, width, height and slope of the transit, respectively.  Finally, in the last few lines you will see this:
+
+\begin{verbatim}
+PROGRAM DONE.
+% Program caused arithmetic error: Floating divide by 0
+% Program caused arithmetic error: Floating underflow
+% Program caused arithmetic error: Floating overflow
+% Program caused arithmetic error: Floating illegal operand
+\end{verbatim}
+
+Depending on how many bad stars you have in your image you may get any number of these errros. They are all okay. The program has worked fine. 
+Now go to the workspace folder and check out that lightcurve!
+
+\subsection{Troubleshooting IMWCS}
+So yout think imwcs is the problem? Here is how to fix it.
+
+\begin{enumerate}
+\item \textbf{Matches are really low and RA \& DEC are way off in images:}\\
+You probably messed up your catalog or forgot to flip the image when getting the x \& y pixel of the targer star. Try making the catalog again. Double check your x \& y pixel values and your target RA \& DEC in the batchfile. The 2 or 3 matches imwcs is making is probably due to dumb luck.
+\item \textbf{Matches are good, but RA and DEC are slightly off:}\\
+If you happen to come across this set of circumstances you have done everything right. This error is the program's fault. When your target star is in a very star dense region or right next to a very star dense region is when you will most likely come across this error. You probably have a catalog with close to 1000 stars in it. There are no good solutions to this problem, but we can probably make it work. 
+
+My leading theory behind this problem is that imwcs gets confused when there a large number of stars just off the edge of the image, or when it is trying to match a bunch of dim stars. To fix this we are going to have to create a special catalog. Proceed to make a catalog for your star like normal, but stop before you hit the submit button to load the catalog. See where it says Radius? This is the radius in minutes of the circle of sky where it will load the survey data. The default size circle of 14 min is a little bit larger than our rectangular image, which is normally okay. However, if their happens to be a bunch of bright stars just outside our image, but inside the survey circle, it can mess up imwcs. So, replace the 14 with a smaller number such as 10 or even 5. Then hit submit and proceed as usual. Replace the old catalog with this new catalog and try running generaltransitall again.
+
+If this doesn't work there is one more trick we can try. When making the catalog with the makecatalog procedure, add the cut keyword. This will remove all stars dimmer than the desired magnitude. I would start with 14 and then work your way down. Here is an example:
+
+\begin{verbatim}
+makecatalog, '2MASS-PSC.txt','WASP-48_cat.txt', cut=14
+\end{verbatim}
+
+If playing around with these two variables doesn't work there is not much else you can do. It might just be that you have bad images. Try again on another night.
+\end{enumerate}
+
+\subsection{Advanced Techniques}
+This section contains some advanced tips and tricks for getting the program to run with marginal datasets. As long as you can get IMWCS to run, we should be able to get a light curve. These methods require you to change the code itself, so be careful and always remember to change it back when you're done.
+\subsubsection{Selecting Reference Stars Manually}
+So yes, sometimes my magnificent gtdataanalysis fails at picking good reference stars. Nobody's perfect. Before I show you how to override it, let's try some other things first. Go check which images were used in the data analysis. The program should remove all of the bad ones, but if you see some that slipped through, try re-running the program without those images using the badimages.txt feature. 
+
+Didn't work? Okay, let's select some target stars manually. Look at the list of stars in the log file that has the star number, standard deviation, flux error and number of valid images listed. Scroll through the list and write down the number of some stars that look promising, meaning they have a low standard deviation and flux error and a high number of valid images. Also write down the star number of the target star. Now go to the workspace folder for your star and start idl. Now were going to open up the raw data file so we can play around with it. In idl type \emph{data = mrdfits('star\_date\_cutphluxinfo.btab.fits',1)}. If you don't see a cutphluxinfo, just open up the regular phluxinfo.btab.fits file. Now type \emph{help, data}. This will show you all of the data we calculate. 
+
+We're interested in flux. To access the flux data type \emph{print, data.flux}. You just printed all of the flux data from all of the stars from all of the images. Cool, but not very helpful. To see the data from just one star type \emph{print, data.flux[a,*]}, where a is your target star's number. To better visualize this type \emph{plot, data.flux[a,*]}. You now have a light curve of sorts! Now lets add in our reference stars. Type \emph{plot, data.flux[a,*]/data.flux[b,*]} where b is one of your possible reference stars. Now you should have what looks like a flat line. To zoom in type \emph{plot, data.flux[a,*]/data.flux[b,*], /ynozero} or \emph{plot, data.flux[a,*]/data.flux[b,*], yrange = [lower,upper]} where lower and upper are your bounds on the y-axis. Hopefully at this point you should see something that looks a bit like a lightcurve. Try out all of your potential reference star candidates and see which ones produce the best lightcurves. Now try combining them by typing something like \emph{plot, data.flux[a,*]/(data.flux[x,*]+data.flux[y,*]+data.flux[z,*]), /ynozero}. Keep going until you come to a combination you are happy with. 
+
+If, during this process you notice there are several points in your lightcurve that are off, try removing the corresponding images and running the analysis again.
+
+Now that we have our reference stars selected manually, here is how to override the program. Open up gtdataanalysis and scroll until you see this:
+
+\begin{verbatim}
+        ;;if stddev of that stars normalized lightcurve is less than cutoffvalue
+        ;;and the star is not the target star
+        ;;and the star has not been added to the list yet
+        ;;and the star has a valid flux in at least 95% of the images 
+        if stddevs[i] lt cutoffvalue + extra && i ne targetstar && $
+        used[i] eq 0 && validimages[i]*1.05 ge validimages[targetstar] then begin
+            ;;then add its data to the best star list
+            beststarholder[counter,*,0] = data.FLUX[i,*]
+            beststarholder[counter,*,1] = data.FLUXERR[i,*]
+\end{verbatim}
+
+Comment out the two lines of the if statement and change it to make it look like this:
+
+\begin{verbatim}
+        ;;if stddev of that stars normalized lightcurve is less than cutoffvalue
+        ;;and the star is not the target star
+        ;;and the star has not been added to the list yet
+        ;;and the star has a valid flux in at least 95% of the images 
+        ;if stddevs[i] lt cutoffvalue + extra && i ne targetstar && $
+        ;used[i] eq 0 && validimages[i]*1.05 ge validimages[targetstar] then begin
+         if i eq x or i eq y or i eq z
+            ;;then add its data to the best star list
+            beststarholder[counter,*,0] = data.FLUX[i,*]
+            beststarholder[counter,*,1] = data.FLUXERR[i,*]
+\end{verbatim}
+
+This will make it so it adds stars x, y and z as reference stars instead of using the normal criteria. Also, a couple more lines up make sure to change the 'counter lt 3' to the number of reference stars you are using if it is different than 3.
+
+\begin{verbatim}
+while counter lt 3 && extra lt 1 do begin
+\end{verbatim}
+
+Now run the program again starting at q=2 and it will use your manually selected reference stars as reference. MAKE SURE TO CHANGE IT BACK WHEN YOU'RE DONE!!!
+
+\subsubsection{Fixing The Line Fitting Procedure}
+Sometimes the program runs great, but fails at puttting an accurate line on your data. Here is how to help it out. 
+Open up transittest.pro. At the top you should see the following:
+
+
+\begin{verbatim}
+;guess format is [midtran time, depth, width, height, slope]
+    dguess=dblarr(5)
+       dguess[0]=median(time) ;midtransit guess is middle of data time
+       dguess[1]=.01d
+       dguess[2]=.08d
+       dguess[3]=1.02d
+       dguess[4]=1d
+\end{verbatim}
+
+Looking at your lightcurve, enter more accurate guesses for some or all of the parameters, then run the program again starting at q=3. It should work this time. If not, keep playing with the parameters until it does.
+MAKE SURE TO CHANGE IT BACK WHEN YOU'RE DONE!!!
+
+
+\end{document}

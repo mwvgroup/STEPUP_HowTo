@@ -1,0 +1,37 @@
+﻿Eric Roebuck April 2011
+
+
+1.	In starry night ‘centre on’ your target star
+
+
+2.	Look for a very bright star near the target star and slew the telescope to that star
+
+
+3.	In WinTv make sure the bright star is at the center of the cross hairs then sync to that star in Starry night.
+
+
+4.	In starry night ‘centre on’ the target star again, slew the telescope to that star.
+
+
+5.	In MaxIm CCD go to the ‘focus’ tab, hit the ‘guider’ button, hit start focus.
+
+
+6.	Now you can use the RCX control to center the star in the slit.  Please note that the ‘North’ and South buttons are now ‘East’ and ‘West’ and visa versa.
+
+
+7.	If the star appears to be a donut shape you need to manually focus using the RCX control.  There are ‘in’ and ‘out’ buttons on the lower left side of the RCX window that you can press until the star comes into focus.
+
+
+8.	After the star is lined up with the slit you may stop the focus button in MaxIm and go to the ‘guide’ tab.  Here you want to hit the ‘expose’ button then hit ‘start’.  If the star appears in the window that pops up press the ‘track’ button then the ‘start’ button.  If the star does not show up go back to step 6 and center the star in the slit again.
+
+
+9.	Now you can navigate to the expose tab.  Here you can choose the length of the exposure that you want to take.  Hit start once you’ve entered the exposure time.  When the spectra is done turn off the guiding.  You will need to create a new folder for that night in the StepUpDataFiles/Spectra folder.  These spectra will be saved in the convention ‘Starname_Spec_01.fit’.
+
+
+10.	After the star spectrum is taken you will want to take a calibration image.  If remotely using the scope, you can just turn on the flat field lights.  This will actually turn on the mercury source.  Go to the exposure tab, set the exposure time to 2 seconds, and take the calibration image.  This will be save in the same folder as the star spectrum.  The naming convention is Starname_Spec_Hg_01.fit.
+
+
+11.	After this step be sure to turn off the flat field lights (the mercury light).  You need to go back to the ‘focus’ tab, hit the ‘guider’ radio button, then start again.  Make sure the star is still in the slit.  If it is not, use the RCX control to fix it.
+
+
+12.	Now you can repeat steps 8-11

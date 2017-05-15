@@ -1,0 +1,105 @@
+\documentclass[10pt,preprint]{aastex}
+
+\usepackage{verbatim}
+\usepackage{graphicx}
+
+\begin{document}
+\title{How To Change File Names}
+\author{Justine Drobitch}
+\date{2012 May}
+
+\section{Introduction}
+The focus of this tutorial will be to learn how to change file names.  The primary use of this is to change files that were named in error.
+
+\section{Changing One File Name}
+
+Changing one file name at a time involves a very simple command which most people will be familiar with already, \emph{mv}. The proper way to use this command is to type the command, followed by the current file name, followed by the name you want to change it to, into the terminal in the folder where the file is located.  For example, if you misspelled the name of a file, you can rename it like this
+
+\begin{verbatim}
+mv mispeledname.pro misspelledname.pro 
+\end{verbatim}
+
+Typically, when we want to apply one command to any number of files, we use the \emph{*} symbol as the wild-card character.  For example, if we wanted to list all fits files in a folder, we can type \emph{ls *.fit}.  
+
+\subsection{We can't use this for renaming multiple files?}
+It would be logical to think that we could rename multiple files in a similar manner, like this
+
+\begin{verbatim}
+mv MC001*R.fit MC001*r.fit
+\end{verbatim}
+
+We would need to use this if we accidentally named our files with the \textbf{R} filter designation but they were actually taken with the \textbf{r} filter.  We might think that this command would just take all file names with anything in the wild-card spot and change the part of the file name with \textbf{R} to \textbf{r}.  This is what everyone will try first; to save you the trouble, the error message you will recieve, for this example, is
+
+\begin{verbatim}
+mv: target 'MC001-#R.fit' is not a directory
+\end{verbatim}
+
+where \#{} is the last image number in the folder.  \emph{Using * to rename multiple files will not work}.  
+
+\subsection{What you might think you have to do now:}
+
+\begin{verbatim}
+mv MC001-001R.fit MC001-001r.fit
+mv MC001-002R.fit MC001-002r.fit
+mv MC001-003R.fit MC001-003r.fit
+mv MC001-004R.fit MC001-004r.fit
+...
+mv MC001-999R.fit MC001-999r.fit
+\end{verbatim}
+
+The rest of this tutorial will go over a better way of doing this, so as to avoid doing tedious labor.
+
+\section{Changing Multiple File Names}
+
+The most efficient way to do this is to use a shell-script.  First we will go over how to make these files and how to run them.  Then we will go over two different scenarios of what to put in them.
+
+\subsection{Creating and Running Shell-Scripts}
+Shell-scipts are like procedure files that we run straight from the terminal, instead of within IDL.  The first thing you want to do is navigate to the folder containing the files you want to change.  Once there, create the script
+
+\begin{verbatim}
+emacs namechange.sh &
+\end{verbatim}
+
+Next, we will insert a \textbf{for} loop into the script, but this will be discussed more specifically in the next sections for different scenarios.  After inserting the loop, save the file, go back to the terminal and type the following to execute the script
+
+\begin{verbatim}
+ sh namechange.sh
+\end{verbatim}
+
+\subsection{Commands for changing beginnings of file names}
+These commands will primarily be used for changing the name of the star in the file names.  In this example, I had a folder of images named \emph{HD80606b} (the planet name) that should have been named \emph{HD80606} (the star name).  If you have something similar to this, add these lines to your script
+
+\begin{verbatim}
+for f in HD80606b* ;do
+     mv $f HD80606${f#HD80606b}
+done
+\end{verbatim}
+
+Replace \emph{HD80606b} with the name you want to be changed, and replace \emph{HD80606} with the name you want it to be changed to.  
+
+\subsection{Commands for changing endings of file names}
+These commands are useful for changing the ends of file names.  In this example, there was a night of data that were named using the \textbf{R} filter designation, but were actually taken with the \textbf{r} filter.  Insert these lines in the script
+
+\begin{verbatim}
+for i in *R.fit ;do 
+    mv "$i" "${i/R.fit}"r.fit
+done
+\end{verbatim}
+
+Similarly, replace \emph{R.fit} with what you want to be changed, and replace \emph{r.fit} with what you want it to be changed to.  
+
+You might notice that there were quotes used in this example and not in the other.  Quotes are useful if your file names have spaces or strange characters in the name.  They were probably not necessary here, but I used them to be safe.  It worked both ways, with and without.
+
+\begin{thebibliography}{9}
+
+\bibitem{site1}
+  1. \textbf{Renaming Files Tutorial} \emph{http://www.debian-administration.org/articles/150}
+
+\bibitem{site2}
+  2. \textbf{Useful Info About Files} \emph{http://dsl.org/cookbook/cookbook\_{}8.html\#{}SEC117}
+
+\bibitem{site3}
+  3. \textbf{Running Scripts} \emph{http://stackoverflow.com/questions/733824/how-to-run-a-sh-script-in-an-unix-console-mac-terminal}
+
+\end{thebibliography}
+\end{document}

@@ -68,7 +68,7 @@ Chapters 1 and 2 provide instructions on the complete observing process for STEP
 \item In Allen 302, log on to the Ptolemy computer and open up the terminal.
 \item Create a directory for the target you are observing in the raw folder (/home/depot/STEPUP/raw) if one does not exist already. Within this newly created directory, make a directory for the data you will take that day in the format of year-month-day. For example, if you are observing the target HAT-P-13 on November 12, 2013 and a directory already exists for that target within raw, you should type {\bf mkdir /home/depot/STEPUP/raw/HAT-P-13/2013-11-12\bf}.
 \item Copy the template for the observing report into the directory that you just created by typing the command {\bf cp /home/depot/STEPUP/obsreport-template.txt /home/depot/ \bf} {\bf STEPUP/raw/\emph{target}/\emph{date}\bf}. You will type observing report here by editing this template. See the appendix for a sample observing report.
-\item On the Lamashtu computer, open the terminal and type: {\bf vncviewer 136.142.17.99}. A prompt will ask you for a password, which is {\bf ccd}. You want to record four pieces of information in the observing report: \emph{cloud coverage, temperature, wind, and humidity}. They are located on the ClarityII window while the seeing camera is shown as a plot. 
+\item On the Lamashtu computer, open the terminal and type: {\bf vncviewer 136.142.17.99}. A prompt will ask you for a password, which is {\bf foo}. You want to record four pieces of information in the observing report: \emph{cloud coverage, temperature, wind, and humidity}. They are located on the ClarityII window while the seeing camera is shown as a plot. 
 \end{itemize}
 	
 \section{General Startup} 
@@ -95,7 +95,7 @@ You should be taking calibrations each night that you observe. However, if you h
 
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[totalheight=.2\textheight]{Calib.png}
+\includegraphics[totalheight=.2\textheight]{Screenshot.jpg}
 \end{center}
 \end{figure}
 
@@ -103,7 +103,7 @@ You should be taking calibrations each night that you observe. However, if you h
 \item Start taking the calibration images by clicking \emph{Start}. As the images begin to download, open the folder you created. Make sure the calibration images are saving to that folder. You also want to make sure that the flat field lights are on.
 \end{enumerate}
 
-Side-note: We also take 30 minute dark calibration images, but this only needs to be done once a month and is usually not done on an observing night due to the fact that it takes over 1.5 hours. To take the 30 min darks the telescope and dome can be left where they are. In the Sequence tab instead of selecting Flat and Bias select Dark and put the exposure time at 1800 seconds (30 min). Other than that the procedure is the same.
+Side-note: We also take 30 minute dark calibration images, but this only needs to be done once a month and is usually not done on an observing night due to the fact that it takes over 1.5 hours. To take the 30 min darks the telescope and dome can be left where they are. In the Sequence tab instead of selecting Flat and Bias select Dark and put the exposure time at 1800 seconds (30 min). Other than that the procedure is the same. 
 
 \section{Focusing}
 
@@ -229,7 +229,7 @@ WinTV shows the image that the finder camera sees. The image is not as clear, bu
 
 \section{Not focusing}
 \begin{itemize}
-\item If you are having trouble focusing, try focusing on a magnitude 6ish star that is dirctly overhead (sidereal time equals star's RA) and a declination of 40 degrees.
+\item If you are having trouble focusing, try focusing on a magnitude 6ish star that is directly overhead (sidereal time equals star's RA) and a declination of 40 degrees.
 \item If you are unsure if the telescope is working (i.e. it is so out of focus you can't see anything) try pointing it at a really bright star such as Vega, Capella, Polaris or even Sirius. While you might be able to see these stars as bright blobs taking up half of the viewing window you won't be able to focus on them since they are so bright. However, they do serve as a good indicator that the telescope is working and pointing where you tell it to go.
 \end{itemize}
 
@@ -239,86 +239,44 @@ WinTV shows the image that the finder camera sees. The image is not as clear, bu
 \section{Sample Observing Report}
 
 \begin{verbatim}
-Observers: Daniel, Megan, Lydia, Zoe
+Observers:
 
 Conditions
-Cloud Cover: Clear
-Wind: 4.1 mph
-Humidity: 38%
-Temperature: 35.6 F
+Cloud Cover:
+Wind:
+Humidity:
+Temperature:
 
-Target: WASP-65  mag: 11.9
-RA: 08:53:17.83     Dec: 08:31:22.8
+Target:			Mag:
+RA: 				Dec:
 
-4:45pm - Checked to make sure dome and telescope were functioning properly
+<start time>pm -  Began setup
 
-5:05pm - started taking dark calibrations
+In this space, record times at which you began: 
+-taking calibration images
+-focusing the telescope 
 
-7:30pm - started taking flat and bias calibrations
+Note: Record if you needed to refocus the telescope due to weather and the time of refocus
 
-8:13pm - focused telescope
+MaxIM: 		FWHM: 		HFD:
 
-MaxIM: FWHM: 2.91      HFD: 4.63
+<guiding start time>pm - Began guiding 
 
-8:35pm - started guiding 
+Guide star: 			Mag:
+RA: 					Dec:
+	
+<sequence start time>pm - Began sequencing
 
-Guide star:TYC811-2091-1    mag: 10.12
-RA: 8:53:50.3        Dec: 8:43:01
+Filter: 				Exposure Time:
 
-8:40pm - Started sequenc08
+In this space, record image information every 30 min until the transit ends with the following format:
 
-Filter: r'     Exp Time:120sec
+<time image is checked> 	<Number of the image & filter>
 
-    001r      FWHM = 5.3        
-          Star(max) = 16873    
-              
-8:47pm 
+FWHM =				Bkgr(avg) =
+Star(max) =			Star(min) =
 
-     003r      FWHM = 3.957        Star(min) = 4565
-          Star(max) =21438    Bkgr(avg) = 4688
-
-For image 4 we lost the guider and the image was completely blank. It looked
-like a dark calibration image. Asof 9:10 it seems to have recovered and all of
-our images look normal
-              
-9:30pm 
-
-     014r      FWHM = 6.364        Star(min) = 3810
-          Star(max) = 21334    Bkgr(avg) = 3906
-           
-10:00pm
-
-     021r      FWHM = 8.138        Star(min) = 4327
-          Star(max) = 12939    Bkgr(avg) = 4429
-              
-10:19pm - refocused, but didn't seem to get any better. Images look okay though.
-
-     024r      FWHM = 9.716        Star(min) = 4114
-          Star(max) = 11707    Bkgr(avg) = 4229
-              
-11:00pm - FWHM over 10 now, tried to refocus again. Refocused 3 times, 
-FWHM of focus star was 7. Wind reading from enviroment computer has
-been above 8 mph. Might be causing bad seeing?
-
-    036r      FWHM = 10.499     Star(min) = 4034
-          Star(max) = 9225    Bkgr(avg) = 4118
-              
-11:30pm 
-
-     041r      FWHM = 10.936        Star(min) = 4009.000
-          Star(max) = 8781.000    Bkgr(avg) = 4096.425
-         
-12:01pm 
-
-     049r      FWHM = 10.320        Star(min) = 3891.000
-          Star(max) = 9865.000    Bkgr(avg) = 3951.282
-        
-12:34pm 
-
-     058r      FWHM = 11.374        Star(min) = 3850.000
-          Star(max) = 8807.000    Bkgr(avg) = 3901.535
-
-12:45pm - Shut down
+<shut down time> - Shut down
 \end{verbatim}
 
 

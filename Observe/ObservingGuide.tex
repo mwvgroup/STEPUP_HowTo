@@ -91,7 +91,7 @@ You should be taking calibrations each night that you observe. However, if you h
 \item In the RCX Control window, note the \emph{ALT} and \emph{AZ} values in the top right corner of the window. You want to set these to {\bf ALT: 10 degrees} and {\bf AZ: 180 degrees}. Within one degree is close enough. To do this, you will use the buttons in the \emph{Motion Control} box in the center of the RCX Control window. Use 'N' and 'S' buttons to adjust the ALT value larger and smaller respectively. Use the 'W' and 'E' to adjust the AZ value larger and smaller respectively. The radio buttons below labeled \emph{Guide, Center, Find, Slew} represent the magnitude of the response with \emph{Slew} being the greatest and \emph{Guide} the smallest. For example, if the ALT is at 40 deg, you will want to use \emph{Slew}, but if it is at 11 deg, you will want to use \emph{Guide}. If the direction arrows do not work, select \emph{Guide} first and try. This will wake the program up if frozen.
 \item You will now create a folder to store the nights images. Click on the Start menu -{$>$} My Computer -{$>$} group 1 on 'aoserver1{$\backslash$}data'(Z:) -{$>$} STEPUPDataFiles. In this folder, create a new folder in the format of YYYY-MM-DD for the night of observation.
 \item In the MaxIM CCD sub-window within the MaxIM DL window, click on the \emph{Sequence} tab. Click on \emph{Options} and select \emph{Set Destination Path...} Select the folder you just created.
-\item Click on \emph{Options} again and select the \emph{Setup Sequence} choice. Enable the two boxes Flat and Bias, setting the suffix as F and B respectively. Make sure the \emph{Binning} is set to 1 and \emph{Repeat} is set to 11 for each. No other settings should be enabled at this point. {\bf IMPORTANT:} The bias images are instantaneous. This should be on default so the \emph{Exposure} cannot be changed. The flat images have exposure times of 2 seconds. Your setup should look like the screenshot below. Biases will not have a filter, however you should be sure to set the filter for the flat sequence to be the same as the filter you plan to take target images with. If you plan to take target images in several filters, you will need to, for each filter, set up a separate flat sequence with the same specifications as above in each different filter. Typically, for observing exoplanet transits, you can use the r filter. For variable stars, use B and V filters.
+\item Click on \emph{Options} again and select the \emph{Setup Sequence} choice. Enable the two boxes Flat and Bias, setting the suffix as F and B respectively. Make sure the \emph{Binning} is set to 1 and \emph{Repeat} is set to 11 for each. No other settings should be enabled at this point. {\bf IMPORTANT:} The bias images are instantaneous. This should be on default so the \emph{Exposure} cannot be changed. The flat images have exposure times of 2 seconds. Your setup should look like the screenshot below. Biases will not have a filter, however you should be sure to set the filter for the flat sequence to be the same as the filter you plan to take target images with. If you plan to take target images in several filters, you will need to, for each filter, set up a separate flat sequence with the same specifications as above in each different filter. Typically, for observing exoplanet transits, you can use the r filter. For variable stars, use B and V filters. For example, if you were observing a variable star your \emph{Setup Sequence} window will look like this:
 
 \begin{figure}[!h]
 \begin{center}
@@ -248,9 +248,9 @@ Target:\hspace{75pt}Mag: \\
 RA:\hspace{90pt}Dec: \\ \\
 (start time) pm - Began setup \\ \\
 \textcolor{red}{In this space, record times at which you began: \\
--taking calibration images \\
--focusing the telescope \\ \\
-Note: Record if you needed to refocus the telescope due to weather and the time of refocus} \\ \\
+-taking calibration images. \\
+-focusing the telescope. \\ \\
+Note: Record if you needed to refocus the telescope due to weather and the time of refocus.} \\ \\
 MaxIM:\hspace{72pt}FWHM:\hspace{75pt}HFD: \\ \\
 (guiding start time) pm - Began guiding \\ \\
 Guide Star:\hspace{54pt}Mag: \\

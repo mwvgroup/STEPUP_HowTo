@@ -4,7 +4,7 @@
 \contentsline {section}{\numberline {1.3}General Startup}{3}
 \contentsline {section}{\numberline {1.4}Calibration}{3}
 \contentsline {section}{\numberline {1.5}Focusing}{5}
-\contentsline {section}{\numberline {1.6}Guiding}{5}
+\contentsline {section}{\numberline {1.6}Guiding}{6}
 \contentsline {section}{\numberline {1.7}Sequencing}{6}
 \contentsline {chapter}{\numberline {2}Abridged Opening Checklist}{7}
 \contentsline {chapter}{\numberline {3}Closing Checklist}{9}

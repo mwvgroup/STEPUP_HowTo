@@ -11,30 +11,26 @@ Temperature:
 Target:				Mag:
 RA: 				Dec:
 
-<start time>pm -  Began setup
+<start time>pm -  Began setup.
 
-In this space, record times at which you began: 
--taking calibration images
--focusing the telescope 
-
-Note: Record if you needed to refocus the telescope due to weather and the time of refocus
+<focus start time>pm - Began focusing.
 
 MaxIM: 		FWHM: 		HFD:
 
-<guiding start time>pm - Began guiding 
+<guiding start time>pm - Began guiding. 
 
 Guide star: 			Mag:
 RA: 				Dec:
 	
-<sequence start time>pm - Began sequencing
+<sequence start time>pm - Began sequencing.
 
 Filter: 			Exposure Time:
 
-In this space, record image information every 30 min until the transit ends with the following format:
+
 
 <time image is checked> 	<Number of the image & filter>
 
-FWHM =				Bkgr(avg) =
-Star(max) =			Star(min) =
+FWHM:				Bkgr(avg):
+Star(max):			Star(min):
 
-<shut down time> - Shut down
+<shut down time> - Shut down.

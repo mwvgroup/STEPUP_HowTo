@@ -1,7 +1,5 @@
 Observers:
 
-Date:
-
 Conditions
 Cloud Cover:
 Wind:

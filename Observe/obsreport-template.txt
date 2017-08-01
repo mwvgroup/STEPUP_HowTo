@@ -8,8 +8,8 @@ Wind:
 Humidity:
 Temperature:
 
-Target:					Mag:
-RA: 						Dec:
+Target:				Mag:
+RA: 				Dec:
 
 <start time>pm -  Began setup.
 
@@ -19,18 +19,18 @@ MaxIM: 		FWHM: 		HFD:
 
 <guiding start time>pm - Began guiding. 
 
-Guide star: 				Mag:
-RA: 						Dec:
+Guide star: 			Mag:
+RA: 				Dec:
 	
 <sequence start time>pm - Began sequencing.
 
-Filter: 					Exposure Time:
+Filter: 			Exposure Time:
 
 
 
 <time image is checked> 	<Number of the image & filter>
 
-FWHM:					Bkgr(avg):
-Star(max):				Star(min):
+FWHM:				Bkgr(avg):
+Star(max):			Star(min):
 	
 <shut down time> - Shut down.

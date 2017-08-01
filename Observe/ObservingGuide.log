@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  27 JUL 2017 15:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  1 AUG 2017 15:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -237,13 +237,6 @@ Overfull \hbox (17.12524pt too wide) in paragraph at lines 69--70
 n the raw folder (/home/depot/STEPUP/raw)
  []
 
-
-Overfull \hbox (138.90193pt too wide) in paragraph at lines 70--71
-\OT1/cmr/m/n/10.95 the com-mand \OT1/cmr/bx/n/10.95 cp /home/depot/STEPUP/obsre
-port-template.txt /home/depot/  STEPUP/raw/\OT1/cmr/bx/it/10.95 target\OT1/cmr/
-bx/n/10.95 /\OT1/cmr/bx/it/10.95 date\OT1/cmr/m/n/10.95 .
- []
-
 [2
 
 ]
@@ -409,7 +402,7 @@ ic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmti12.pfb>
-Output written on ObservingGuide.pdf (14 pages, 2642317 bytes).
+Output written on ObservingGuide.pdf (14 pages, 2642537 bytes).
 PDF statistics:
  94 PDF objects out of 1000 (max. 8388607)
  64 compressed objects within 1 object stream

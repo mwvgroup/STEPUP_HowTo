@@ -15,7 +15,9 @@ RA: 				Dec:
 
 <focus start time>pm - Began focusing.
 
-MaxIM: 		FWHM: 		HFD:
+FocusMax Info -			HFD:
+
+MaxIM Info - 			FWHM: 		HFD:
 
 <guiding start time>pm - Began guiding. 
 
@@ -25,7 +27,6 @@ RA: 				Dec:
 <sequence start time>pm - Began sequencing.
 
 Filter: 			Exposure Time:
-
 
 
 <time image is checked> 	<Number of the image & filter>

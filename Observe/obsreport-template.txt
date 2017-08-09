@@ -1,17 +1,28 @@
 Observers:
 
-Date:
+Date: (YYYY-MM-DD)
+
+Scientific Goal of Observation:
 
 Conditions
 Cloud Cover:
-Wind:
-Humidity:
-Temperature:
+Wind: <>mph
+Humidity: <>%
+Temperature: <>°F
 
 Target:				Mag:
-RA: 				Dec:
+RA: <>h <>m <>s			Dec: <>° <>’ <>”
 
 <start time>pm -  Began setup.
+
+<dark sequence start time>pm - Began taking darks.
+
+Darks:		Exposure Time:
+
+<calibration sequence start time>pm - Began taking calibration images.
+
+Flats:		Filter(s):
+Biases:
 
 <focus start time>pm - Began focusing.
 
@@ -28,10 +39,19 @@ RA: 				Dec:
 
 Filter: 			Exposure Time:
 
+FWHM:				Bkgr(avg):
+Star(max):			Star(min):
 
-<time image is checked> 	<Number of the image & filter>
+
+<time image is checked> 	<Number of the image>
 
 FWHM:				Bkgr(avg):
 Star(max):			Star(min):
+
+<sequence stop time>pm - Stopped sequencing.
+
+Science Images: 
 	
 <shut down time> - Shut down.
+
+Success: <Yes/No>

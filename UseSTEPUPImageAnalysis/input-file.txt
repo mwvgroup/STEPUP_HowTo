@@ -1,0 +1,13 @@
+#DATE=<YYYY-MM-DD>
+#TARGET=<target-name>
+#RA=<(HH:MM:SS)>
+#DEC=<(+/-DD:MM:SS)>
+#FILTERS=<filter-symbol>
+#VSPCODE=<vspcode>
+#COMPCODES=
+#COMPMAGS=
+#COMPCOORDS=((HH:MM:SS), (HH:MM:SS))
+#CNAME=
+#CCOORDS=
+#KNAME=
+#KCOORDS=

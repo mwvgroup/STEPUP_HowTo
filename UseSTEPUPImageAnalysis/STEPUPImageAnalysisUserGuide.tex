@@ -1,0 +1,72 @@
+\documentclass[11pt]{report}
+\usepackage{adjustbox}
+\usepackage{xcolor}
+\usepackage{gensymb}
+
+\topmargin=0.0in %length of margin at the top of the page (1 inch added by default)
+\oddsidemargin=0.0in %length of margin on sides for odd pages
+\evensidemargin=0in %length of margin on sides for even pages
+\textwidth=6.5in %How wide you want your text to be
+\marginparwidth=0.5in
+\headheight=0pt %1in margins at top and bottom (1 inch is added to this value by default)
+\headsep=0pt %Increase to increase white space in between headers and the top of the page
+\textheight=9.0in
+
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+\textsc{\LARGE University of Pittsburgh}\\[1.5cm]
+{\huge \bfseries STEPUP Image Analysis User Guide\\[0.4cm] }
+
+\vfill
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft}\large
+\emph{Author:}\d\
+Helena Richie
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+Professor Wood-Vasey
+\end{flushright}
+\end{minipage}
+
+\end{center}
+\end{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\chapter{Preliminary Steps}
+
+\section{Transferring Data}
+
+\begin{enumerate}
+\item Begin by checking to see if a directory has already been made for the night of observation that you wish to run the code on. Do this by typing: {\bf cd /home/depot/STEPUP/raw/\emph{target-name}}. If the directory for your target does not exist, use the {\bf mkdir} command to make a directory for your target in {\bf /home/depot/STEPUP/raw}. Either way, the last command you type should be {\bf mkdir /home/depot/STEPUP/raw/\emph{target-name}/\emph{date-of-observation}}. 
+\item Once there is a directory for your night of observation, use the {\bf cd} command to enter it. Now, in order to access the data on the observatory computer, type {\bf ftp aoserver1.univ.pitt.edu}. When it prompts you for a name, type \emph{anonymous}. You may type anything for the password and hit enter.
+\item Now you must go to the directory from which you wish to transfer data. Do this by typing {\bf cd /STEPUPDataFiles/\emph{date-of-observation}}.
+\ Before you begin copying files, make sure that prompting is turned off so that you do not have to confirm the transfer of each file individually. Do this by typing {\bf prompt}. The setting toggles between on and off, so you may need to type it twice to make sure it says that prompting is turned off.
+\item Next, type {\bf binary}. This changes the mode to transfer.
+\item Finally, to copy the files use the {\bf mget} command. Type {\bf mget \emph{name-of-target}*.fit}. This will transfer all files that have the target name in the title and the ".fit" extension. If you do not have a copy of the observing report on the Astro Lab computers, be sure to type {\bf mget obsreport.txt} to transfer it as well. 
+\item Type {\bf bye} to log off of the observatory computer.
+\end{enumerate}
+
+\section{Creating Input File}
+Note: As a rule of thumb, the formatting of each parameter in the input file should match previous formatting of the same parameter in other cases. For example, the \emph{date} parameter should always be formatted as \emph{YYYY-MM-DD}. Also, when you see the angle brackets "$\langle$" and "$\rangle$", you should know to replace the general formatting with your specific information in the correct formatting inside of the brackets. For example, if you're creating an input file for the night of August 19th, 2017 and see {\bf $\langle$YYYY-MM-DD$\rangle$}, you should know to replace it with {\bf 2017-09-19}. Also, be sure to use both capital and lowercase letters as appropriate.
+\begin{enumerate}
+\item Copy the input file template to the target directory by typing {\bf cp /home/depot/STEPUP/} {\bf raw/input-file.txt /home/depot/STEPUP/raw/\emph{target-name}/\emph{date-of-observation}}. 
+\item Make sure you are {\bf cd}'ed into the night's directory and type the command {\bf gedit input-file.txt}. Now you will begin editing the file.
+\item Go through the file and input all of the parameters that you're immediately aware of. These should include {\bf DATE, TARGET, RA, DEC} and {\bf FILTERS}. If you are unsure of any of them, check the observing report.
+\item Now that you have completed all of the immediately known entries, you must determine {\bf VSPCODE, COMPCODES, COMPMAGS, COMPCOORDS, CNAME, CCOORDS, KNAME} and {\bf KCOORDS}. All of this information will be found on \emph{aavso.org}. Go to that site and sign in. 
+\item Once you are on the site and logged in, mouse over the \emph{Observing} tab at the top. Under the \emph{Variable Star Charts} option, click on \emph{Variable Star Plotter (VSP)}. 
+\item Once on the Variable Star Plotter page, you will need to specify the right ascension, declination, predefined chart scale (which should be option F, 18.5 arcminutes), and the filters which the photometry table should display (at the bottom). If you have previously used VSP for this target, you may skip these steps and simply use the Chart ID from last time, which can be found in the input-file.txt for that night of observing. Once you have filled out this information, click \emph{Plot Chart} at the bottom. 
+\item You should have been redirected to a page that has a star chart for your target on it. At the top under where it says "Variable Star Plotter" click \emph{Photometry Table for This Chart}.
+\item Back in input-file.txt, enter the bolded code at the top where it says "Report this sequence as..." in the {\bf VSPCODE} entry point.
+\item 
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

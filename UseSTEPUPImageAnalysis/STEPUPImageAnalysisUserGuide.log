@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  6 NOV 2017 16:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  6 NOV 2017 16:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**ObservingGuide.tex
-(./ObservingGuide.tex
+**STEPUPImageAnalysisUserGuide.tex
+(./STEPUPImageAnalysisUserGuide.tex
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/report.cls
@@ -25,7 +25,7 @@ File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(./adjustbox.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/adjustbox/adjustbox.sty
 Package: adjustbox 2012/05/21 v1.0 Adjusting TeX boxes (trim, clip, ...)
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
@@ -40,11 +40,12 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 \XKV@depth=\count88
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-(./adjcalc.sty
-Package: adjcalc 2011/08/07 v1.0 Provides advanced setlength with multiple back
+(/usr/local/texlive/2017/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
 -ends (calc, etex, pgfmath)
-) (./trimclip.sty
-Package: trimclip 
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2012/05/16 v1.0 Trim and clip general TeX material
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
@@ -74,7 +75,7 @@ Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-(./collectbox.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/collectbox/collectbox.sty
 Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
 \collectedbox=\box26
 )
@@ -82,7 +83,7 @@ Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
 \tc@lly=\dimen106
 \tc@urx=\dimen107
 \tc@ury=\dimen108
-Package trimclip Info: Using driver 'tc-pdftex.def'. on input line 380.
+Package trimclip Info: Using driver 'tc-pdftex.def'.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
 File: tc-pdftex.def 2012/05/13 v1.0 Clipping driver for pdftex
@@ -123,21 +124,21 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/was/gensymb.sty
 Package: gensymb 2003/07/02 v1.0 (WaS)
 )
-(./ObservingGuide.aux)
-\openout1 = `ObservingGuide.aux'.
+(./STEPUPImageAnalysisUserGuide.aux)
+\openout1 = `STEPUPImageAnalysisUserGuide.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
 
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -201,337 +202,116 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \celsius on input line 18.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 18.
+LaTeX Info: Redefining \celsius on input line 17.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 17.
 
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 18.
-Package gensymb Info: Using \Omega for \ohm on input line 18.
+LaTeX Info: Redefining \ohm on input line 17.
+Package gensymb Info: Using \Omega for \ohm on input line 17.
 
 Package gensymb Warning: Not defining \micro.
 
 <Title.jpg, id=1, 2975.115pt x 1983.41pt>
 File: Title.jpg Graphic file (type jpg)
  <use Title.jpg>
-Package pdftex.def Info: Title.jpg used on input line 29.
+Package pdftex.def Info: Title.jpg used on input line 27.
 (pdftex.def)             Requested size: 487.78584pt x 325.215pt.
 
-Overfull \hbox (18.03085pt too wide) in paragraph at lines 29--30
+Overfull \hbox (18.03085pt too wide) in paragraph at lines 27--28
  [] 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 42.
+(Font)              <10.95> on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 42.
+(Font)              <8> on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 42.
+(Font)              <6> on input line 40.
 [1
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./Title
-.jpg>] (./ObservingGuide.toc)
+.jpg>] (./STEPUPImageAnalysisUserGuide.toc)
 \tf@toc=\write3
-\openout3 = `ObservingGuide.toc'.
+\openout3 = `STEPUPImageAnalysisUserGuide.toc'.
 
  [1
 
 ]
 Chapter 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 61.
-(/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 61.
-
-Overfull \hbox (17.12524pt too wide) in paragraph at lines 70--71
-[]\OT1/cmr/m/n/10.95 Create a di-rec-tory for the tar-get you are ob-serv-ing i
-n the raw folder (/home/depot/STEPUP/raw)
- []
-
 [2
 
 ]
-Overfull \hbox (15.12541pt too wide) in paragraph at lines 80--81
-[]\OT1/cmr/m/n/10.95 On the Ptolemy com-puter, open the ter-mi-nal and type: \O
-T1/cmr/bx/n/10.95 vncviewer ao-keeler.phyast.pitt.edu\OT1/cmr/m/n/10.95 .
+Overfull \hbox (2.7549pt too wide) in paragraph at lines 69--70
+\OT1/cmr/bx/n/10.95 raw/input-file.txt /home/depot/STEPUP/raw/\OT1/cmr/bx/it/10
+.95 target-name\OT1/cmr/bx/n/10.95 /\OT1/cmr/bx/it/10.95 date-of-observation\OT
+1/cmr/m/n/10.95 . 
  []
 
-[3] <Screenshot.png, id=25, 583.17876pt x 314.17375pt>
-File: Screenshot.png Graphic file (type png)
- <use Screenshot.png>
-Package pdftex.def Info: Screenshot.png used on input line 101.
-(pdftex.def)             Requested size: 241.46297pt x 130.084pt.
-
-[4 <./Screenshot.png>] [5] [6]
+<example.png, id=22, 486.81876pt x 254.9525pt>
+File: example.png Graphic file (type png)
+ <use example.png>
+Package pdftex.def Info: example.png used on input line 83.
+(pdftex.def)             Requested size: 372.60826pt x 195.13098pt.
+ [3] [4 <./example.png>]
 Chapter 2.
+
+Overfull \hbox (49.83156pt too wide) in paragraph at lines 94--95
+[]\OT1/cmr/m/n/10.95 Now, open a new ter-mi-nal win-dow and type \OT1/cmr/bx/n/
+10.95 cd home/depot/STEPUP/STEPUPImageAnalysis/\OT1/cmr/m/n/10.95 .
+ []
+
+
+Overfull \hbox (0.27399pt too wide) in paragraph at lines 94--95
+\OT1/cmr/m/n/10.95 Now that you have en-tered into the di-rec-tory con-tain-ing
+ the code, type the com-mand \OT1/cmr/bx/n/10.95 python3
+ []
+
+
+Overfull \hbox (25.91542pt too wide) in paragraph at lines 101--102
+\OT1/cmr/m/n/10.95 called \OT1/cmr/bx/n/10.95 /home/depot/STEPUP/raw/\OT1/cmr/b
+x/it/10.95 name-of-target\OT1/cmr/bx/n/10.95 /\OT1/cmr/bx/it/10.95 date-of-obse
+rvation\OT1/cmr/bx/n/10.95 /ISR[]Images/\OT1/cmr/m/n/10.95 .
+ []
+
+[5
+
+] [6]
+Chapter 3.
+
+Overfull \hbox (16.47183pt too wide) in paragraph at lines 112--113
+[]\OT1/cmr/m/n/10.95 Once you have ran the pro-gram on your dataset and have yo
+ur \OT1/cmr/m/it/10.95 out-put.txt \OT1/cmr/m/n/10.95 file, go to \OT1/cmr/m/it
+/10.95 www.aavso.org\OT1/cmr/m/n/10.95 . 
+ []
+
 [7
 
-] [8]
-Chapter 3.
-[9
-
-]
-Chapter 4.
-[10
-
-] [11]
-Chapter 5.
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--314
-
- []
-
-[12
-
-] [13] [14] (./ObservingGuide.aux) ) 
+] (./STEPUPImageAnalysisUserGuide.aux) ) 
 Here is how much of TeX's memory you used:
- 2783 strings out of 492995
- 39693 string characters out of 6132704
- 111645 words of memory out of 5000000
- 6290 multiletter control sequences out of 15000+600000
+ 2772 strings out of 492995
+ 40143 string characters out of 6132704
+ 109823 words of memory out of 5000000
+ 6281 multiletter control sequences out of 15000+600000
  10456 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,6n,37p,1163b,390s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2017/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmti12.pfb>
-Output written on ObservingGuide.pdf (15 pages, 2651505 bytes).
+ 40i,7n,37p,851b,394s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2017/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/font
+s/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2017/texmf-dist/font
+s/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2017/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmti12.pfb>
+Output written on STEPUPImageAnalysisUserGuide.pdf (8 pages, 2612920 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 69 compressed objects within 1 object stream
+ 71 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

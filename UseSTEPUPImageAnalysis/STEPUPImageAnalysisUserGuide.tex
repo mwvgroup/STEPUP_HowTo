@@ -54,10 +54,10 @@ Professor Wood-Vasey
 \section{Transferring Data}
 
 \begin{enumerate}
-\item Begin by checking to see if a directory has already been made for the night of observation that you wish to run the code on. Do this by typing: {\bf cd /home/depot/STEPUP/raw/\emph{target-name}}. If the directory for your target does not exist, use the {\bf mkdir} command to make a directory for your target in {\bf /home/depot/STEPUP/raw}. Either way, the last command you type should be {\bf mkdir /home/depot/STEPUP/raw/\emph{target-name}/\emph{date-of-observation}}. 
-\item Once there is a directory for your night of observation, use the {\bf cd} command to enter it. Now, in order to access the data on the observatory computer, type {\bf ftp aoserver1.univ.pitt.edu}. When it prompts you for a name, type \emph{anonymous}. You may type anything for the password and hit enter.
+\item Log onto Ptolemy in Allen 302. Open up a terminal window by clicking the terminal icon at the top of the screen. Now, begin by checking to see if a directory has already been made for the night of observation that you wish to run the code on. Do this by typing: {\bf cd /home/depot/STEPUP/raw/\emph{target-name}}. If the directory for your target does not exist, use the {\bf mkdir} command to first make a directory for your target in {\bf /home/depot/STEPUP} {\bf /raw} and then make a directory for your night of observing within the target directory. Either way, the last command you type should be {\bf cd /home/depot/} {\bf \emph{STEPUP/raw/target-name}/\emph{date-of-observation}}. Where \emph{target-name} is entered as it was when you named the images you wish to transfer and \emph{date-of-observation} is entered as {\bf YYYY-MM-DD}.
+\item Once there is a directory for your night of observation, use the {\bf cd} command to enter into it. Now, in order to access the data on the observatory computer, type {\bf ftp aoserver1.univ.pitt.edu}. When it prompts you for a name, type \emph{anonymous} and hit enter. You may type anything for the password and hit enter.
 \item Now you must go to the directory from which you wish to transfer data. Do this by typing {\bf cd /STEPUPDataFiles/\emph{date-of-observation}}.
-\ Before you begin copying files, make sure that prompting is turned off so that you do not have to confirm the transfer of each file individually. Do this by typing {\bf prompt}. The setting toggles between on and off, so you may need to type it twice to make sure it says that prompting is turned off.
+\item Before you begin copying files, make sure that prompting is turned off so that you do not have to confirm the transfer of each file individually. Do this by typing {\bf prompt}. The setting toggles between on and off, so you may need to type it twice to make sure it says that prompting is turned off.
 \item Next, type {\bf binary}. This changes the mode to transfer.
 \item Finally, to copy the files use the {\bf mget} command. Type {\bf mget \emph{name-of-target}*.fit}. This will transfer all files that have the target name in the title and the ".fit" extension. If you do not have a copy of the observing report on the Astro Lab computers, be sure to type {\bf mget obsreport.txt} to transfer it as well. 
 \item Type {\bf bye} to log off of the observatory computer.
@@ -71,7 +71,7 @@ Note: As a rule of thumb, the formatting of each parameter in the input file sho
 \item Go through the file and input all of the parameters that you're immediately aware of. These should include {\bf DATE, TARGET, RA} and {\bf DEC}. If you are unsure of any of them, check the observing report.
 \item Now that you have completed all of the immediately known entries, you must determine {\bf VSPCODE, COMPMAGS, COMPCOORDS, CNAME, CCOORDS, KNAME} and {\bf KCOORDS}. All of this information will be found on \emph{aavso.org}. Go to that site and sign in. 
 \item Once you are on the site and logged in, mouse over the \emph{Observing} tab at the top. Under the \emph{Variable Star Charts} option, click on \emph{Variable Star Plotter (VSP)}. 
-\item Once on the Variable Star Plotter page, you will need to specify the right ascension, declination, predefined chart scale (which should be option F, 18.5 arcminutes), and the filters which the photometry table should display (at the bottom). If you have previously used VSP for this target, you may skip these steps and simply use the Chart ID from last time, which can be found in the input-file.txt for that night of observing. Once you have filled out this information, click \emph{Plot Chart} at the bottom. {\bf Note:} It is important that you check that all of the stars given in the photometry table are {\bf entirely} in the image. If they are not, be sure not to include any of the information for that star in the input-file.txt, as it will cause an error in the program if you do. 
+\item Once on the Variable Star Plotter page, you will need to specify the right ascension, declination, predefined chart scale (which should be option F, 18.5 arcminutes), and the filters which the photometry table should display (at the bottom). If you have previously used VSP for this target, you may skip these steps and simply use the Chart ID from last time, which can be found in the input-file.txt for that night of observing. Once you have filled out this information, click \emph{Plot Chart} at the bottom.
 \item You should have been redirected to a page that has a star chart for your target on it. At the top under where it says "Variable Star Plotter" click \emph{Photometry Table for This Chart}.
 \item Back in input-file.txt, enter the bolded code at the top where it says "Report this sequence as..." in the {\bf VSPCODE} entry point.
 \item Now, in the {\bf COMPMAGS} category, enter in the magnitudes in the order that they appear, top to bottom, each separated by a comma. \textbf{Important}: be sure to include the magnitude values for only the filter that you observed in.
@@ -91,7 +91,7 @@ Note: As a rule of thumb, the formatting of each parameter in the input file sho
 \chapter{Running STEPUP Image Analysis}
 \begin{enumerate}
 \item Before you run the code, be sure to check that you have all of the calibration and target images in your directory as well as that your input file. Additionally, make sure that the naming of each image is consistent with the target name that you put in your input file and how your directory is named.
-\item Now, open a new terminal window and type {\bf cd home/depot/STEPUP/STEPUPImageAnalysis/}. Now that you have entered into the directory containing the code, type the command {\bf python3 main.py}. This will begin running the code.
+\item Now, open a new terminal window and type {\bf cd home/depot/STEPUP/STEPUP\_image} {\bf\_analysis/}. Now that you have entered into the directory containing the code, type the command {\bf python3 main.py}. This will begin running the code.
 \item You will first be prompted for the name of the target. Be consistent as you enter it and be sure not to include any additional capital/lowercase letters and spaces.
 \item Next, you will be prompted to enter the date of observation. Enter is as {\bf YYYY-MM-DD} with no additional spaces.
 \item Now the instrument signature removal part of the program should be running. When it is finished, the program will pause as it asks you if you would like the rest of the program to continue running or end with instrument signature removal. If you would like the rest of the program to run, enter accordingly, but first you must create an image of the field of view of the target star with WCS information in its header before the program starts running again.\
@@ -104,7 +104,7 @@ Note: As a rule of thumb, the formatting of each parameter in the input file sho
 \item Under the \emph{Calibration} column along the right side, click on \emph{new-image.fits}. This will save the image to the computer's {\bf Downloads} directory.
 \item Move this image into the directory with your instrument signature removed images by typing {\bf mv /home/Downloads/new-image.fits /home/depot/STEPUP/raw/\emph{name-of-target}/\emph{date-of-observation}/ISR\_Images/}. Now that this image is the correct directory, enter {\bf Y} to continue.
 \item If you continued with the program, the astrometry part of the program will begin to run. This takes may take up to an hour to complete, so keep checking in on the program every 15 minutes or so as it runs. Once this part is completed, the program will ask if you would like it to perform photometry. Answer as needed.
-\item After the photometry process has completed the program will be finished running. Check your target directory to make sure that a \emph{lightcurve.pdf} and a \emph{output.txt} file are both in there. Also open up the files and check to make sure they look okay. If anything seems out of the ordinary, see the troubleshooting section to determine any possible errors.
+\item After the photometry process has completed the program will be finished running. Check your target directory to make sure that a \emph{lightcurve.pdf} and a \emph{output.txt} file are both in there. Also open up the files and check to make sure they look okay. If anything seems out of the ordinary, see the Troubleshooting Chapter to determine any possible errors.
 \end{enumerate}
 
 \chapter{Uploading Data}
@@ -115,6 +115,16 @@ Note: As a rule of thumb, the formatting of each parameter in the input file sho
 \item Now, on the \emph{Upload a File of Observations} page, click \emph{Choose File} and find your \emph{output.txt} file in your target directory and select it.
 \item Now that you have selected the file, click \emph{Upload File}.
 \end{enumerate}
+
+\chapter{Troubleshooting}
+\emph{Note:} STEPUP Image Analysis was written in 2017 in Python 3.6.2. The Troubleshooting tips below are written in accordance with the Python 3.6.2 documentation and syntax. 
+\section{Instrument Signature Removal}
+\begin{enumerate}
+\item {\bf NotADirectoryError}: If you get an error telling you that a certain directory does not exist, it is most likely because you typed something wrong (i.e. capitalizing/not capitalizing letters that should be capital or adding additional spaces). Simply type {\bf python3 main.py} to try again and by \emph{very careful} to make sure you are typing the target name and date of observation exactly as it appears in the directory containing the data you are trying to process.
+\item {\bf FileNotFoundError}: This error may occur if there are no Bias Frame or Flat Field images in the target directory. If you did not take any calibration images the night you observed, you will need to copy them in from another directory from a night when you observed in the same filter. Technically, you can use Bias images from any night, since they are taken without a filter, but your Flat images \emph{must} be in the same filter. Once you have copied them in with the {\bf cp} command, you must remove the directory which has been created to store the calibration images by typing {\bf rmdir /home/depot/STEPUP/raw/\emph{name-of-target}/\emph{date-of-observation}/mcalib}. Once you have done this and the calibration images are in the target directory type {\bf cd} into {\bf STEPUP\_image\_analysis} and type {\bf python3 main.py} to begin running the code again.
+\end{enumerate}
+\section{Perform Astrometry}
+\section{Perform Photometry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}

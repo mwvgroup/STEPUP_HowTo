@@ -52,19 +52,20 @@ Professor Wood-Vasey
 \chapter{Preliminary Steps}
 
 \section{Transferring Data}
-
+{\bf Note:} If you have already created a directory for your night of observation, skip to step 2. You may check this by opening a terminal window at the top of the screen and typing {\bf cd /home/depot/STEPUP/} {\bf raw/\emph{target-name}/\emph{date-of-observation}}. If this command is successful, then the directory already exists.
 \begin{enumerate}
-\item Log onto Ptolemy in Allen 302. Open up a terminal window by clicking the terminal icon at the top of the screen. Now, begin by checking to see if a directory has already been made for the night of observation that you wish to run the code on. Do this by typing: {\bf cd /home/depot/STEPUP/raw/\emph{target-name}}. If the directory for your target does not exist, use the {\bf mkdir} command to first make a directory for your target in {\bf /home/depot/STEPUP} {\bf /raw} and then make a directory for your night of observing within the target directory. Either way, the last command you type should be {\bf cd /home/depot/} {\bf \emph{STEPUP/raw/target-name}/\emph{date-of-observation}}. Where \emph{target-name} is entered as it was when you named the images you wish to transfer and \emph{date-of-observation} is entered as {\bf YYYY-MM-DD}.
-\item Once there is a directory for your night of observation, use the {\bf cd} command to enter into it. Now, in order to access the data on the observatory computer, type {\bf ftp aoserver1.univ.pitt.edu}. When it prompts you for a name, type \emph{anonymous} and hit enter. You may type anything for the password and hit enter.
+
+\item Log onto Ptolemy in Allen 302. Open up a terminal window by clicking the terminal icon at the top of the screen. If a directory for your target does not exist, use the {\bf mkdir} command to first make a directory for your target in {\bf /home/depot/STEPUP/raw} and then make a directory for your night of observing within the target directory. The end result should be this path: {\bf /home/depot/STEPUP/raw/\emph{target-name}/\emph{date-of-observation}}. {\bf Note:} it is important that your naming of the directory is consistent with how you named the files when you observed. 
+\item Once there is a directory for your night of observation, use the {\bf cd} command to enter into it. Now, in order to remotely access the data on the observatory computer, type {\bf ftp aoserver1.univ.pitt.edu}. When it prompts you for a name, type \emph{anonymous} and hit enter. You may type anything for the password and hit enter.
 \item Now you must go to the directory from which you wish to transfer data. Do this by typing {\bf cd /STEPUPDataFiles/\emph{date-of-observation}}.
 \item Before you begin copying files, make sure that prompting is turned off so that you do not have to confirm the transfer of each file individually. Do this by typing {\bf prompt}. The setting toggles between on and off, so you may need to type it twice to make sure it says that prompting is turned off.
 \item Next, type {\bf binary}. This changes the mode to transfer.
 \item Finally, to copy the files use the {\bf mget} command. Type {\bf mget \emph{name-of-target}*.fit}. This will transfer all files that have the target name in the title and the ".fit" extension. If you do not have a copy of the observing report on the Astro Lab computers, be sure to type {\bf mget obsreport.txt} to transfer it as well. 
 \item Type {\bf bye} to log off of the observatory computer.
+\item Now, back in a Ptolemy terminal window, check to make sure that the files are in the directory that you created. 
 \end{enumerate}
 
 \section{Creating Input File}
-Note: As a rule of thumb, the formatting of each parameter in the input file should match previous formatting of the same parameter in other cases. For example, the \emph{date} parameter should always be formatted as \emph{YYYY-MM-DD}. Also, when you see the angle brackets "$\langle$" and "$\rangle$", you should know to replace the general formatting with your specific information in the correct formatting inside of the brackets. For example, if you're creating an input file for the night of August 19th, 2017 and see {\bf $\langle$YYYY-MM-DD$\rangle$}, you should know to replace it with {\bf 2017-09-19}. Also, be sure to use both capital and lowercase letters as appropriate.
 \begin{enumerate}
 \item Copy the input file template to the target directory by typing {\bf cp /home/depot/STEPUP/} {\bf raw/input-file.txt /home/depot/STEPUP/raw/\emph{target-name}/\emph{date-of-observation}}. 
 \item Make sure you are {\bf cd}'ed into the night's directory and type the command {\bf gedit input-file.txt}. Now you will begin editing the file.
@@ -91,7 +92,8 @@ Note: As a rule of thumb, the formatting of each parameter in the input file sho
 \chapter{Running STEPUP Image Analysis}
 \begin{enumerate}
 \item Before you run the code, be sure to check that you have all of the calibration and target images in your directory as well as that your input file. Additionally, make sure that the naming of each image is consistent with the target name that you put in your input file and how your directory is named.
-\item Now, open a new terminal window and type {\bf cd home/depot/STEPUP/STEPUP\_image} {\bf\_analysis/}. Now that you have entered into the directory containing the code, type the command {\bf python3 main.py}. This will begin running the code.
+\item Open up a new terminal window and type {\bf export PATH=\$PATH:/usr/local/wcstools-3.3.3/}.
+\item Next, type {\bf cd home/depot/STEPUP/STEPUP\_image} {\bf\_analysis/}. Now that you have entered into the directory containing the code, type the command {\bf python3 main.py}. This will begin running the code.
 \item You will first be prompted for the name of the target. Be consistent as you enter it and be sure not to include any additional capital/lowercase letters and spaces.
 \item Next, you will be prompted to enter the date of observation. Enter is as {\bf YYYY-MM-DD} with no additional spaces.
 \item Now the instrument signature removal part of the program should be running. When it is finished, the program will pause as it asks you if you would like the rest of the program to continue running or end with instrument signature removal. If you would like the rest of the program to run, enter accordingly, but first you must create an image of the field of view of the target star with WCS information in its header before the program starts running again.\

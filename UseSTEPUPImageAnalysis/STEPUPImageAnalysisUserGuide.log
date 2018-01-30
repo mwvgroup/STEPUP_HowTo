@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 NOV 2017 11:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  29 JAN 2018 21:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -242,30 +242,29 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ]
 Chapter 1.
 
-Overfull \hbox (20.19014pt too wide) in paragraph at lines 58--59
-\OT1/cmr/m/n/10.95 Now, in or-der to ac-cess the data on the ob-ser-va-tory com
--puter, type \OT1/cmr/bx/n/10.95 ftp aoserver1.univ.pitt.edu\OT1/cmr/m/n/10.95 
-.
+Overfull \hbox (35.63254pt too wide) in paragraph at lines 55--56
+\OT1/cmr/m/n/10.95 check this by open-ing a ter-mi-nal win-dow at the top of th
+e screen and typ-ing \OT1/cmr/bx/n/10.95 cd /home/depot/STEPUP/
  []
 
 [2
 
 ]
-Overfull \hbox (2.7549pt too wide) in paragraph at lines 69--70
+Overfull \hbox (2.7549pt too wide) in paragraph at lines 70--71
 \OT1/cmr/bx/n/10.95 raw/input-file.txt /home/depot/STEPUP/raw/\OT1/cmr/bx/it/10
 .95 target-name\OT1/cmr/bx/n/10.95 /\OT1/cmr/bx/it/10.95 date-of-observation\OT
 1/cmr/m/n/10.95 . 
  []
 
-[3] <example.png, id=25, 486.81876pt x 254.9525pt>
+<example.png, id=21, 486.81876pt x 254.9525pt>
 File: example.png Graphic file (type png)
  <use example.png>
-Package pdftex.def Info: example.png used on input line 83.
+Package pdftex.def Info: example.png used on input line 84.
 (pdftex.def)             Requested size: 372.60826pt x 195.13098pt.
- [4 <./example.png>]
+ [3] [4 <./example.png>]
 Chapter 2.
 
-Overfull \hbox (25.91542pt too wide) in paragraph at lines 101--102
+Overfull \hbox (25.91542pt too wide) in paragraph at lines 103--104
 \OT1/cmr/m/n/10.95 called \OT1/cmr/bx/n/10.95 /home/depot/STEPUP/raw/\OT1/cmr/b
 x/it/10.95 name-of-target\OT1/cmr/bx/n/10.95 /\OT1/cmr/bx/it/10.95 date-of-obse
 rvation\OT1/cmr/bx/n/10.95 /ISR[]Images/\OT1/cmr/m/n/10.95 .
@@ -276,7 +275,7 @@ rvation\OT1/cmr/bx/n/10.95 /ISR[]Images/\OT1/cmr/m/n/10.95 .
 ] [6]
 Chapter 3.
 
-Overfull \hbox (16.47183pt too wide) in paragraph at lines 112--113
+Overfull \hbox (16.47183pt too wide) in paragraph at lines 114--115
 []\OT1/cmr/m/n/10.95 Once you have ran the pro-gram on your dataset and have yo
 ur \OT1/cmr/m/it/10.95 out-put.txt \OT1/cmr/m/n/10.95 file, go to \OT1/cmr/m/it
 /10.95 www.aavso.org\OT1/cmr/m/n/10.95 . 
@@ -296,7 +295,7 @@ Here is how much of TeX's memory you used:
  6281 multiletter control sequences out of 15000+600000
  10456 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,7n,37p,933b,394s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,7n,37p,933b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2017/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/font
 s/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts
@@ -304,13 +303,12 @@ s/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts
 s/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2017/texmf-dist/font
 s/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmti12.pfb>
-Output written on STEPUPImageAnalysisUserGuide.pdf (9 pages, 2617232 bytes).
+pe1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti12.pfb>
+Output written on STEPUPImageAnalysisUserGuide.pdf (9 pages, 2608486 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
- 50 compressed objects within 1 object stream
+ 70 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

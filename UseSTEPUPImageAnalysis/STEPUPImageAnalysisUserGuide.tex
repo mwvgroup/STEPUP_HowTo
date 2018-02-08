@@ -67,7 +67,7 @@ Professor Wood-Vasey
 
 \section{Creating Input File}
 \begin{enumerate}
-\item Copy the input file template to the target directory by typing {\bf cp /home/depot/STEPUP/} {\bf raw/input-file.txt /home/depot/STEPUP/raw/\emph{target-name}/\emph{date-of-observation}}. 
+\item Copy the input file template to the target directory by typing {\bf cp /home/depot/STEPUP/} {\bf input-file.txt /home/depot/STEPUP/raw/\emph{target-name}/\emph{date-of-observation}}. 
 \item Make sure you are {\bf cd}'ed into the night's directory and type the command {\bf gedit input-file.txt}. Now you will begin editing the file.
 \item Go through the file and input all of the parameters that you're immediately aware of. These should include {\bf DATE, TARGET, RA} and {\bf DEC}. If you are unsure of any of them, check the observing report.
 \item Now that you have completed all of the immediately known entries, you must determine {\bf VSPCODE, COMPMAGS, COMPCOORDS, CNAME, CCOORDS, KNAME} and {\bf KCOORDS}. All of this information will be found on \emph{aavso.org}. Go to that site and sign in. 
@@ -92,8 +92,8 @@ Professor Wood-Vasey
 \chapter{Running STEPUP Image Analysis}
 \begin{enumerate}
 \item Before you run the code, be sure to check that you have all of the calibration and target images in your directory as well as that your input file. Additionally, make sure that the naming of each image is consistent with the target name that you put in your input file and how your directory is named.
-\item Open up a new terminal window and type {\bf export PATH=\$PATH:/usr/local/wcstools-3.3.3/}.
-\item Next, type {\bf cd home/depot/STEPUP/STEPUP\_image} {\bf\_analysis/}. Now that you have entered into the directory containing the code, type the command {\bf python3 main.py}. This will begin running the code.
+\item Open up a new terminal window and type {\bf export PATH=\$PATH:/usr/local/wcstools-3.3.3/bin}.
+\item Next, type {\bf cd /home/depot/STEPUP/STEPUP\_image} {\bf\_analysis/}. Now that you have entered into the directory containing the code, type the command {\bf python3 main.py}. This will begin running the code.
 \item You will first be prompted for the name of the target. Be consistent as you enter it and be sure not to include any additional capital/lowercase letters and spaces.
 \item Next, you will be prompted to enter the date of observation. Enter is as {\bf YYYY-MM-DD} with no additional spaces.
 \item Now the instrument signature removal part of the program should be running. When it is finished, the program will pause as it asks you if you would like the rest of the program to continue running or end with instrument signature removal. If you would like the rest of the program to run, enter accordingly, but first you must create an image of the field of view of the target star with WCS information in its header before the program starts running again.\

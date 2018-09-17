@@ -58,6 +58,7 @@ Chapters 1 and 2 provide instructions on the complete observing process for STEP
 \section{Checking the Conditions}
 
 \begin{itemize}
+\item Use forecast.io to check cloud coverage at the address 159 Riverview Ave, Pittsburgh, PA 15214.
 \item Use Pittsburgh Clear Sky Chart (http://cleardarksky.com/c/PittsburghPAkey.html) during the days before to check the possibility of observing that night. 
 \item The day of, check NOAA's IR maps (http://www.goes.noaa.gov/ECIR4.html) to look at cloud cover in addition to Pittsburgh Clear Dark Sky.
 \item At 7:15pm you can start checking the All Sky Camera on Allegheny Observatory's website (http://www.pitt.edu/{\textasciitilde}aobsvtry/All-Sky.html) to directly verify the cloud coverage at the observatory. Looking out the window yourself has also shown to be a good way of checking for clouds.
@@ -69,7 +70,6 @@ Chapters 1 and 2 provide instructions on the complete observing process for STEP
 \item In Allen 302, log on to the Ptolemy computer and open up the terminal.
 \item Create a directory for the target you are observing in the raw folder (/home/depot/STEPUP/raw) if one does not exist already. Within this newly created directory, make a directory for the data you will take that day in the format of year-month-day. For example, if you are observing the target HAT-P-13 on November 12, 2013 and a directory already exists for that target within raw, you should type {\bf mkdir /home/depot/STEPUP/raw/HAT-P-13/2013-11-12\bf}.
 \item Copy the template for the observing report into the directory that you just created by typing the command {\bf cp /home/depot/STEPUP/obsreport-template.txt\bf} (type a space) {\bf /home/depot/STEPUP/raw/\emph{target}/\emph{date}\bf}. You will type observing report here by editing this template. See the appendix for a sample observing report.
-\item On the Lamashtu computer, open the terminal and type: {\bf vncviewer 136.142.17.99}. A prompt will ask you for a password, which is {\bf foo}. You want to record four pieces of information in the observing report: \emph{cloud coverage, temperature, wind, and humidity}. They are located on the ClarityII window while the seeing camera is shown as a plot. 
 \end{itemize}
 	
 \section{General Startup} 
@@ -117,7 +117,7 @@ Side-note: We also take 30 minute dark calibration images, but this only needs t
 \item In Starry Night College 6, click on the \emph{Options} tab on the top menu bar. Go to \emph{Orientation} and select \emph{Equatorial}. Go to the \emph{Edit} tab on the top menu bar and select \emph{Centre On...} Enter the target coordinates. 
 \item Zoom in to the small rectangular box that should be labeled "Meade RCX-400..." The zoom controls are in the upper right corner of the window. Find a 6-8 magnitude star nearby that is not a binary star system by moving your cursor over the stars. Right click on the star and select \emph{slew to 'starname'}. You should see a red cross hair cursor move to that point. This cursor indicates where the telescope is pointing. 
 \item Visually check on the webcam monitor that the telescope is pointing through the opening in the dome. Turn off flat field lights in the Keeler Power Controller 1.1.
-\item In MaxIM CCD window, go to the \emph{Focus} tab. Click on the \emph{CCD} radio button. {\bf Make sure binning is set to 3 when CCD radio button is selected!} Set the exposure time between 1-5 seconds depending on quality of image. \emph{Delay} should be set at 0. Click \emph{Start Focus}. A window of the field of view will open. Click \emph{Stop}. The dimensions of this window should be the same as the dimensions of the CCD window: 3072 x 2048. Find the focus star in that image, right click on it and select \emph{point telescope here}.
+\item In MaxIM CCD window, go to the \emph{Focus} tab. Click on the \emph{CCD} radio button. {\bf Make sure binning is set to 3 when CCD radio button is selected!} Set the exposure time between 1-5 seconds depending on quality of image. \emph{Delay} should be set at 0. Click \emph{Start Focus}. A window of the field of view will open. Click \emph{Stop}. Find the focus star in that image, right click on it and select \emph{point telescope here}.
 \item Go back to Starry Night College 6.  The red cursor may or may not have shifted a bit. Right click on the focus star and select \emph{sync on 'starname'}. 
 \item Open {\bf FocusMax}, which should be in the taskbar (It opened automatically when you connected the focuser). Click \emph{Focus}. Record the {\bf HFD} that FocusMax returns in the observing report. Also, under the \emph{Inspect} tab of MaxIM CCD, record both the {\bf FWHM} and {\bf HFD} values. 
 \end{enumerate}
@@ -138,6 +138,19 @@ Side-note: We also take 30 minute dark calibration images, but this only needs t
 \item After the image downloads, click on the cross hair button near the top of the MaxIM DL screen. A circular aperture now becomes your cursor, and a small window with information about the pixel counts should pop up. Move the circular cursor over the target star. If the counts are between 20,000-50,000, then you are set. Record the {\bf FWHM, Maximum, Minimum, Bgd Avg} in the observing report. You will record this information every 30 minutes. If the counts are below 20,000, you will want to increase the exposure time. If the counts are above 50,000, you will want to decrease the exposure time. 
 \item If the maximum hits 65,535 this means the ccd has been maxed out. If the target star hits 65,535 in an image than we \emph{cannot} use that image in our data analysis. 
 \item Try to keep the exposure time below 200s so we get a decent number of images of the the transit. If you observing a star dimmer than magnitude 11.5, this may mean that the maximum counts dip to around 10,000. That's okay, as long at its remains above 7,500 the data should be analyzable, just slightly noisier. 
+\end{enumerate}
+
+\chapter{Using the Finder Camera}
+Using the finder camera is a relatively easy way to see what the telescope is really pointed at. For instance, sometimes Starry Night \emph{thinks} you're looking at a certain star, but the telescope may in reality be out of sync with the program and pointed at some nearby patch of sky instead. Also, sometimes it is hard to identify why you can't see stars in your focus image (i.e. is it cloudy, are the dome shutters closed, etc.). Using the finder cam will allow you to quickly identify these issues and get you back on track.
+\begin{enumerate}
+\item Once logged onto the observatory computer, go to the \emph{Start} button in the bottom left.
+\item Now click on \emph{Remote Desktop Connection} in the left column.
+\item In the dropdown box of the window that pops up, make sure you have the IP address that ends in "105" selected. Then hit \emph{connect}.
+\item To sign in, the unsername and password are both \emph{blah}.
+\item Next, go to {\bf CCDOps}.  Establish a link on the icon bar and once you're connected at the bottom it will say \emph{STI}.
+\item Use focus mode by clicking \emph{Focus}. A one-second exposure should be sufficient.
+\item Once you are finished using the finder camera, close it without saving.
+\item In the icon bar, hit \emph{Shutdown}. You can log out or shut off to exit the remote.
 \end{enumerate}
 
 \chapter{Abridged Opening Checklist}

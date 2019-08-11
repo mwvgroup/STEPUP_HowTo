@@ -58,7 +58,7 @@ Chapters 1 and 2 provide instructions on the complete observing process for STEP
 \section{Checking the Conditions}
 
 \begin{itemize}
-\item Use forecast.io to check cloud coverage at the address 159 Riverview Ave, Pittsburgh, PA 15214.
+\item Use the website forecast.io to check cloud coverage at the address 159 Riverview Ave, Pittsburgh, PA 15214.
 \item Use Pittsburgh Clear Sky Chart (http://cleardarksky.com/c/PittsburghPAkey.html) during the days before to check the possibility of observing that night. 
 \item The day of, check NOAA's IR maps (http://www.goes.noaa.gov/ECIR4.html) to look at cloud cover in addition to Pittsburgh Clear Dark Sky.
 \item At 7:15pm you can start checking the All Sky Camera on Allegheny Observatory's website (http://www.pitt.edu/{\textasciitilde}aobsvtry/All-Sky.html) to directly verify the cloud coverage at the observatory. Looking out the window yourself has also shown to be a good way of checking for clouds.
@@ -69,7 +69,7 @@ Chapters 1 and 2 provide instructions on the complete observing process for STEP
 \begin{itemize}
 \item In Allen 302, log on to the Ptolemy computer and open up the terminal.
 \item Create a directory for the target you are observing in the raw folder (/home/depot/STEPUP/raw) if one does not exist already. Within this newly created directory, make a directory for the data you will take that day in the format of year-month-day. For example, if you are observing the target HAT-P-13 on November 12, 2013 and a directory already exists for that target within raw, you should type {\bf mkdir /home/depot/STEPUP/raw/HAT-P-13/2013-11-12\bf}.
-\item Copy the template for the observing report into the directory that you just created by typing the command {\bf cp /home/depot/STEPUP/obsreport-template.txt\bf} (type a space) {\bf /home/depot/STEPUP/raw/\emph{target}/\emph{date}\bf}. You will type observing report here by editing this template. See the appendix for a sample observing report.
+\item Copy the template for the observing report into the directory that you just created by typing the command {\bf cp /home/depot/STEPUP/obsreport-template.txt\bf} (type a space) {\bf /home/depot/STEPUP/raw/\emph{target}/\emph{date}\bf}. In your target directory, you should add the date to the filename using the {\bf mv} command and edit the file (using the {\bf gedit} command and log your observation throughout the night. See the appendix for a sample observing report.
 \end{itemize}
 	
 \section{General Startup} 
@@ -78,7 +78,7 @@ Chapters 1 and 2 provide instructions on the complete observing process for STEP
 \item On the Ptolemy computer, open the terminal and type: {\bf vncviewer ao-keeler.phyast.pitt.edu}. A prompt will ask you for a password, which is {\bf foo}. If the computer is not logged on, you will have to log on with the password: {\bf group1}. The username should be defaulted as \emph{group1}, but if it isn't, change the username to \emph{group1}. The username and password are the same. 
 \item Open the {\bf Logitech QuickCam} on the desktop. When a window pops up, click on the first icon in that window. Use this to monitor the movement of the telescope and dome.
 \item Open the {\bf Keeler Power Controller 1.1} on the desktop. You will see a series of on and off buttons. Turn the telescope on first (an automated one minute waiting period follows) followed by the rest of the controls. After you have turned on the {\bf Lens Cap Power}, click on the \emph{Open} button under {\bf Lens Cap}. View the webcam to make sure the lens cap is opening. 
-\item Open the {\bf Digital Dome Works} on the desktop. Two windows should pop up: \emph{Digital DomeWorks v5.2} and \emph{RCX Control}. {\bf WARNING: KEEP THE RCX WINDOW ON LEFT SIDE OF SCREEN. IT MUST NOT MOVE TO THE RIGHT HALF OF THE SCREEN!} If the RCX window even briefly edges over to right side of screen, call Lou. 
+\item Open the {\bf Digital Dome Works} on the desktop. Two windows should pop up: \emph{Digital DomeWorks v5.2} and \emph{RCX Control}. {\bf WARNING: DO NOT MOVE THE RCX WINDOW. IT MUST REMAIN IN THE SAME POSITON! (You may minimize it.)} If the RCX window even briefly edges over to right side of screen, call Lou. 
 \item Open the {\bf MaxIM DL} on the desktop. When the MaxIM window pops up, click on the {\bf Toggle CCD Control} button in the row near the top of the window. When the MaxIM CCD window opens, you should be in the \emph{Setup} tab. Click on the \emph{Connect} button followed by the \emph{Cooler On} button. 
 \item Still in the MaxIM DL window, click on the {\bf Toggle Telescope Control} button in the same row near the top of the window. When the Telescope Control window opens, you should be in the \emph{Setup} tab. Click \emph{Connect} for both the telescope and focuser.
 \end{enumerate}
@@ -92,7 +92,17 @@ You should be taking calibrations each night that you observe. However, if you h
 \item In the RCX Control window, note the \emph{ALT} and \emph{AZ} values in the top right corner of the window. You want to set these to {\bf ALT: 10 degrees} and {\bf AZ: 180 degrees}. Within one degree is close enough. To do this, you will use the buttons in the \emph{Motion Control} box in the center of the RCX Control window. Use 'N' and 'S' buttons to adjust the ALT value larger and smaller respectively. Use the 'W' and 'E' to adjust the AZ value larger and smaller respectively. The radio buttons below labeled \emph{Guide, Center, Find, Slew} represent the magnitude of the response with \emph{Slew} being the greatest and \emph{Guide} the smallest. For example, if the ALT is at 40 deg, you will want to use \emph{Slew}, but if it is at 11 deg, you will want to use \emph{Guide}. If the direction arrows do not work, select \emph{Guide} first and try. This will wake the program up if frozen.
 \item You will now create a folder to store the nights images. Click on the Start menu -{$>$} My Computer -{$>$} group 1 on 'aoserver1{$\backslash$}data'(Z:) -{$>$} STEPUPDataFiles. In this folder, create a new folder in the format of YYYY-MM-DD for the night of observation.
 \item In the MaxIM CCD sub-window within the MaxIM DL window, click on the \emph{Sequence} tab. Click on \emph{Options} and select \emph{Set Destination Path...} Select the folder you just created.
-\item Click on \emph{Options} again and select the \emph{Setup Sequence} choice. Enable the two boxes Flat and Bias, setting the suffix as F and B respectively. Make sure the \emph{Binning} is set to 1 and \emph{Repeat} is set to 11 for each. No other settings should be enabled at this point. {\bf IMPORTANT:} The bias images are instantaneous. This should be on default so the \emph{Exposure} cannot be changed. The flat images have exposure times of 2 seconds. Biases will not have a filter, however, you should be sure to set the filter for the flat sequence to be the same as the filter you plan to take target images with. Indicate these filters in the suffix box. Your setup should look like the screenshot below. If you plan to take target images in several filters, you will need to, for each filter, set up a separate flat sequence with the same specifications as above in each different filter. Typically, for observing exoplanet transits, you can use the r filter. For variable stars, use B and V filters. For example, if you were observing a variable star your \emph{Setup Sequence} window will look like this:
+\item Click on \emph{Options} again and select the \emph{Setup Sequence} choice. Enable the two boxes Flat and Bias, setting the suffix as F and B respectively. Make sure the \emph{Binning} is set to 1 and \emph{Repeat} is set to 11 for each. No other settings should be enabled at this point. {\bf IMPORTANT:} The bias images are instantaneous. This should be on default so the \emph{Exposure} cannot be changed. The flat images have different exposure times, depending on what filters you are observing in. They are as follows:
+\begin{enumerate}
+\item B = 50~s
+\item V = 20~s
+\item R = 10~s
+\item g' = 15~s
+\item r' = 7~s
+\item i' = 60~s
+\item H$\alpha$ = 90~s
+\end{enumerate}
+ Biases will not have a filter, however, you should be sure to set the filter for the flat sequence to be the same as the filter you plan to take target images with. Indicate these filters in the suffix box. Your setup should look like the screenshot below. If you plan to take target images in several filters, you will need to, for each filter, set up a separate flat sequence with the same specifications as above in each different filter. Typically, for observing exoplanet transits, you can use the r filter. For variable stars, use B and V filters. For example, if you were observing a variable star your \emph{Setup Sequence} window will look like the below image.
 
 \begin{figure}[!h]
 \begin{center}
@@ -104,7 +114,7 @@ You should be taking calibrations each night that you observe. However, if you h
 \item Start taking the calibration images by clicking \emph{Start}. As the images begin to download, open the folder you created. Make sure the calibration images are saving to that folder. You also want to make sure that the flat field lights are on.
 \end{enumerate}
 
-Side-note: We also take 30 minute dark calibration images, but this only needs to be done once a month and is usually not done on an observing night due to the fact that it takes over 1.5 hours. To take the 30 min darks the telescope and dome can be left where they are. In the Sequence tab instead of selecting Flat and Bias select Dark and put the exposure time at 1800 seconds (30 min). Other than that the procedure is the same. 
+Side-note: We also take 30 minute dark calibration images, but this only needs to be done once a month and is usually not done on an observing night due to the fact that it takes over 1.5 hours. To take the 30 min darks the telescope and dome can be left where they are. In the Sequence tab instead of selecting Flat and Bias select Dark and put the exposure time at 1800 seconds (30 min). Other than that, the procedure is the same. 
 
 \section{Focusing}
 
@@ -113,7 +123,6 @@ Side-note: We also take 30 minute dark calibration images, but this only needs t
 \item Still in Digital DomeWorks, click the \emph{Open} tab. This will open the dome shutters. Use the webcam to visually verify that the shutters of the dome are in fact opening. 
 \item Open {\bf Starry Night College 6} on the desktop (If it asks for updates, do not update. If it asks for downloads, do not download). When the window opens click on the \emph{Telescope} tab on the left side of the screen. Then click \emph{Connect}. Minimize the \emph{Telescope} tab. Do not use these tabs again until closing.
 \item In Digital DomeWorks, check the \emph{Slave to Telescope} box in the lower left corner. 
-\item Open {\bf STVRemote} on the desktop. Click on the \emph{Link} tab at the top and select \emph{Establish Link (Com 3)}. Click on the \emph{Image} button once. Using the buttons under the \emph{Value} button, adjust the exposure time to 1.5 seconds. Finally, click the \emph{Monitor} button twice. 
 \item In Starry Night College 6, click on the \emph{Options} tab on the top menu bar. Go to \emph{Orientation} and select \emph{Equatorial}. Go to the \emph{Edit} tab on the top menu bar and select \emph{Centre On...} Enter the target coordinates. 
 \item Zoom in to the small rectangular box that should be labeled "Meade RCX-400..." The zoom controls are in the upper right corner of the window. Find a 6-8 magnitude star nearby that is not a binary star system by moving your cursor over the stars. Right click on the star and select \emph{slew to 'starname'}. You should see a red cross hair cursor move to that point. This cursor indicates where the telescope is pointing. 
 \item Visually check on the webcam monitor that the telescope is pointing through the opening in the dome. Turn off flat field lights in the Keeler Power Controller 1.1.
@@ -136,7 +145,7 @@ Side-note: We also take 30 minute dark calibration images, but this only needs t
 \item In the MaxIM CCD \emph{Sequence} tab, click on \emph{Options} -{$>$} \emph{Setup Sequence}. Uncheck any previously-selected calibration image sequences. Make sure that \emph{Light} is selected for the image type and that the box next to it checked. Select the appropriate filter and suffix (r' for exoplanets). Select an exposure time depending on the magnitude of the target star, normally between 30-120 seconds. Also, set \emph{Repeat} to 3000 and \emph{Binning} to 1. Click \emph{Ok}.
 \item Back in the \emph{Sequence} tab, make sure the image starts at 1 and the target star name is in the \emph{Autosave Filename} box. Click \emph{Start}.
 \item After the image downloads, click on the cross hair button near the top of the MaxIM DL screen. A circular aperture now becomes your cursor, and a small window with information about the pixel counts should pop up. Move the circular cursor over the target star. If the counts are between 20,000-50,000, then you are set. Record the {\bf FWHM, Maximum, Minimum, Bgd Avg} in the observing report. You will record this information every 30 minutes. If the counts are below 20,000, you will want to increase the exposure time. If the counts are above 50,000, you will want to decrease the exposure time. 
-\item If the maximum hits 65,535 this means the ccd has been maxed out. If the target star hits 65,535 in an image than we \emph{cannot} use that image in our data analysis. 
+\item If the maximum hits 65,535 this means the ccd has been maxed out. If the target star hits 65,535 in an image than we \emph{cannot} use that image in our data analysis and the exposure time should be lowered.
 \item Try to keep the exposure time below 200s so we get a decent number of images of the the transit. If you observing a star dimmer than magnitude 11.5, this may mean that the maximum counts dip to around 10,000. That's okay, as long at its remains above 7,500 the data should be analyzable, just slightly noisier. 
 \end{enumerate}
 
@@ -160,7 +169,6 @@ Using the finder camera is a relatively easy way to see what the telescope is re
 \item Open Logitech webcam. 
 \item Open {\bf Digital Dome Works}. {\bf Remember to keep RCX window on left side of the screen!!!}
 \item Open {\bf MaxIM DL}. Open {\bf Toggle CCD Control} and click both \emph{Connect} and \emph{Cooler On}. Open {\bf Toggle Telescope Control} and connect both focuser and telescope.
-\item Open {\bf STVRemote}. Under the \emph{Link} tab, click on \emph{Establish Link (Com 3)}. Click \emph{Image} button once. Set exposure time to 1.5 seconds. Click \emph{Monitor} twice. 
 \item Create folder for the night in STEPUPDataFiles under the Z drive.
 \item Set destination path to that folder in MaxIM CCD.
 \item {\bf Calibrations}
@@ -199,7 +207,6 @@ Using the finder camera is a relatively easy way to see what the telescope is re
 \item In the Starry Night College 6 program, open the \emph{Telescope} tab on the left. Disconnect the telescope. Exit Starry Night College 6, and don't click Save.
 \item In the RCX Control window, click on the \emph{Park} button. Don't close the window. When you close Digital Dome Works, the RCX Control window will close.
 \item In Digital DomeWorks, unslave the telescope and turn the dome to 180 degrees by clicking GoTo. If the dome happens to get stuck, try turning it in the opposite direction. When the dome stops, click \emph{Home} and make sure the message ``Dome is Home" is there. Click \emph{Close} and make sure the message ``DSR is CLOSED" is there. Visually check the webcam screen to ensure dome is in fact closed (If it's dark, turn on flat field lights).
-\item In STVRemote, click \emph{Interrupt} and close the program.
 \item In the Keeler Power Controller 1.1, click \emph{Close} under the lens cap. Make sure lens cap closes in the webcam view.
 \item Close the Logitech webcam.
 \item Close Digital Dome Works.
@@ -252,9 +259,9 @@ WinTV shows the image that the finder camera sees. The image is not as clear, bu
 
 \section{Sample Observing Report}
 
+Success: Yes \\ \\
 Observers: Anja, Helena, Meghan,  Cynthia \\ \\
 Date: 2017-07-25 \\ \\
-Scientific Goal of Observation: Contribute data for AAVSO Alert Notice 555 on WASP-65. \\ \\
 {\bf Conditions \\}
 Cloud Cover: Clear \\
 Wind: 4.1mph \\
@@ -283,7 +290,7 @@ MaxIM Info -\hspace{90pt}FWHM: 2.91 \hspace{75pt}HFD: 4.63 \\ \\
 Guide Star: TYC811-2091-1\hspace{20pt}Mag: 10.12 \\
 RA: 8:53:50.3\hspace{90pt}Dec: 8:43:01\\ \\
 8:40pm - Began sequencing. \\ \\
-Filter(s): r\hspace{99pt}Exposure Time: 120s\\ \\
+Filter(s): r'\hspace{83pt}Exposure Time: 120s\\ \\
 FWHM: 2.975\hspace{70pt}Bkgr(avg): 4543 \\
 Star(max): 20897\hspace{55pt}Star(min): 4998\\ \\
 \textcolor{red}{In this space, record image information every 30 min until you're finished observing with the following format:} \\ \\ 
@@ -318,9 +325,8 @@ Star(max): 23453\hspace{55pt}Star(min): 1890\\ \\
 FWHM: 7.021\hspace{70pt}Bkgr(avg): 5567 \\
 Star(max): 24221\hspace{55pt}Star(min): 2189\\ \\
 12:32am - Stopped sequence. \\
-Science Images: 114\hspace{97pt}Filter(s): r \\ \\
+Science Images: 114\hspace{97pt}Filter(s): r' \\ \\
 12:33am - Begin shutdown. \\ \\
 12:45am - Shut down. \\ \\
-Success: Yes
 
 \end{document}

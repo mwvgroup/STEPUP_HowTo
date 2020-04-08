@@ -5,7 +5,7 @@
 \contentsline {section}{\numberline {1.4}Calibration}{3}
 \contentsline {section}{\numberline {1.5}Focusing}{5}
 \contentsline {section}{\numberline {1.6}Guiding}{6}
-\contentsline {section}{\numberline {1.7}Sequencing}{6}
+\contentsline {section}{\numberline {1.7}Sequencing}{7}
 \contentsline {chapter}{\numberline {2}Using the Finder Camera}{8}
 \contentsline {chapter}{\numberline {3}Abridged Opening Checklist}{9}
 \contentsline {chapter}{\numberline {4}Closing Checklist}{11}

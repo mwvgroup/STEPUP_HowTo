@@ -122,13 +122,23 @@ Side-note: We also take 30 minute dark calibration images, but this only needs t
 \section{Focusing}
 
 \begin{enumerate}
-\item In Digital DomeWorks, move the dome back to 180 degrees using the \emph{Go To} setting. When it nears 180 degrees, click \emph{Home}. It should say that "Dome is Home" and "DSR closed". If not, continue to click \emph{Home} until it says "Dome is Home"
-\item Still in Digital DomeWorks, click the \emph{Open} tab. This will open the dome shutters. Use the webcam to visually verify that the shutters of the dome are in fact opening. \emph{**Note: You should never open the dome shutters unless you are sure there is no chance of precipitation in the area of the observatory. Check the environmental camera and never open the dome shutters if it is overcast.}
+\item In Digital DomeWorks, move the dome back to 180 degrees using the \emph{Go To} setting. When it nears 180 degrees, click \emph{Home}. It should say that "Dome is Home" and "DSR closed". If not, continue to click \emph{Home} until it says "Dome is Home".
+\item Still in Digital DomeWorks, click the \emph{Open} button. This will open the dome shutters. Use the webcam to visually verify that the shutters of the dome are in fact opening. 
+\begin{itemize}
+\item\emph{Note:} You should never open the dome shutters unless you are sure there is no chance of precipitation in the area of the observatory. As a rule of thumb, do not open the shutters if it is mostly cloudy/overcast.
+\item To check this, use the environmental computer. Click the VNCViewer icon on the desktop and select the automatically-highlighted IP address. The password is \emph{foo}.
+\item At the bottom of this window, there is a current and time-lapse display of the skies above the observatory. Use the current display to ensure that it is not overcast. Once you are done, exit out of the environmental computer.
+\end{itemize}
 \item Open {\bf Starry Night College 6} on the desktop (If it asks for updates, do not update. If it asks for downloads, do not download). When the window opens click on the \emph{Telescope} tab on the left side of the screen. Then click \emph{Connect}. Minimize the \emph{Telescope} tab. Do not use these tabs again until closing.
 \item In Digital DomeWorks, check the \emph{Slave to Telescope} box in the lower left corner. 
-\item In Starry Night College 6, click on the \emph{Options} tab on the top menu bar. Go to \emph{Orientation} and select \emph{Equatorial}. Go to the \emph{Edit} tab on the top menu bar and select \emph{Centre On...} Enter the target coordinates. Make sure that you are entering them in the \emph{Equatorial J2000} tab!
+\item In Starry Night College 6, click on the \emph{Options} tab on the top menu bar. Go to \emph{Orientation} and select \emph{Equatorial}. Go to the \emph{Edit} tab on the top menu bar and select \emph{Centre On...} Enter the target coordinates. Make sure that you are entering them in the \emph{Equatorial J2000} tab! An example of a coordinate entry in this box can be seen below.
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[totalheight=.2\textheight]{centreon.png}
+\end{center}
+\end{figure}
 \item Zoom in to the small rectangular box that should be labeled "Meade RCX-400..." The zoom controls are in the upper right corner of the window. Find a 6-8 magnitude star nearby that is not a binary star system by moving your cursor over the stars. Right click on the star and select \emph{slew to 'starname'}. You should see a red cross hair cursor move to that point. This cursor indicates where the telescope is pointing. 
-\item Visually check on the webcam monitor that the telescope is pointing through the opening in the dome. Turn off flat field lights in the Keeler Power Controller 1.1.
+\item Visually check on the webcam monitor that the telescope is pointing through the opening in the dome. Turn off flat field lights in the Keeler Power Controller 1.1. Also, close the webcam so that the computer can run faster.
 \item In MaxIM CCD window, go to the \emph{Expose} tab. Ensure that the filter selected in the drop-down box is the filter that you wish to observe in.
 \item Go to the \emph{Focus} tab. Click on the \emph{CCD} radio button. {\bf Make sure binning is set to 3 when CCD radio button is selected!} Set the exposure time between 1-5 seconds depending on quality of image. \emph{Delay} should be set at 0. Click \emph{Start Focus}. A window of the field of view will open. Click \emph{Stop}. Find the focus star in that image, right click on it and select \emph{point telescope here}.
 \item Go back to Starry Night College 6.  The red cursor may or may not have shifted a bit. Right click on the focus star and select \emph{sync on 'starname'}. 
@@ -211,8 +221,8 @@ Using the finder camera is a relatively easy way to see what the telescope is re
 \item In the MaxIM Telescope Control window, click \emph{Disconnect} for both the telescope and focuser. Close the window.
 \item Exit MaxIM DL completely.
 \item In the Starry Night College 6 program, open the \emph{Telescope} tab on the left. Disconnect the telescope. Exit Starry Night College 6, and don't click Save.
-\item In the RCX Control window, click on the \emph{Park} button. Don't close the window. When you close Digital Dome Works, the RCX Control window will close.
-\item In Digital DomeWorks, unslave the telescope and turn the dome to 180 degrees by clicking GoTo. If the dome happens to get stuck, try turning it in the opposite direction. When the dome stops, click \emph{Home} and make sure the message ``Dome is Home" is there. Click \emph{Close} and make sure the message ``DSR is CLOSED" is there. Visually check the webcam screen to ensure dome is in fact closed (If it's dark, turn on flat field lights).
+\item In the RCX Control window, click on the \emph{Park} button. Reopen the webcam and turn on the flat field lights to ensure that the telescope is moving. Don't close the window. When you close Digital Dome Works, the RCX Control window will close.
+\item In Digital DomeWorks, unslave the telescope and turn the dome to 180 degrees by clicking GoTo. If the dome happens to get stuck, try turning it in the opposite direction. When the dome stops, click \emph{Home} and make sure the message ``Dome is Home" is there. Click \emph{Close} and make sure the message ``DSR is CLOSED" is there. Visually check the webcam screen to ensure dome is in fact closed.
 \item In the Keeler Power Controller 1.1, click \emph{Close} under the lens cap. Make sure lens cap closes in the webcam view.
 \item Close the Logitech webcam.
 \item Close Digital Dome Works.

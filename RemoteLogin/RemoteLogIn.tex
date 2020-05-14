@@ -1,58 +1,69 @@
-\documentclass[11pt, preprint]{aastex}
-
-
+\documentclass[11pt]{article}
 \usepackage{verbatim}
 \usepackage[urlbordercolor={0 0 1}]{hyperref}
 
 \hypersetup{colorlinks=true,urlcolor=blue}
 
 \begin{document}
+
 \title{How to Remote Log In}
-\author{Daniel Whitehurst}
-\date{December 2013}
+\author{
+Daniel Whitehurst. Updated by Helena Richie.}
+\date{December 2013. Upated \today.}
+\maketitle
 
 \section{Introduction}
-This document is designed to instruct members on how to set up remote access for those using Windows computers. Hopefully a section will be added for Mac users later.
-
+This document is designed to instruct members on how to set up remote access for both Windows and Mac computers.
 \section{Getting Clearance}
-Before you will be able to remotely log on to the Astro computers you must be put on the VPN list. To get yourself on the list email Greg Gollinger at \href{mailto:greg4@pitt.edu}{\emph{greg4@pitt.edu}}. 
+Before you will be able to remotely log on to the Astro computers you must be put on the VPN list. To get yourself on the list email Grace Gollinger at \href{mailto:gjgollinger@pitt.edu}{\emph{gjgollinger@pitt.edu}} with the lead undergraduate and MWV CC'ed. 
 
-\section{Putty}
-The first of multiple programs you will need to install to remotely log in is \textbf{Putty}. The latest version of \textbf{Putty} can be found at \url{http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe}. The program should download automatically and run from the download. I suggest you move the file to a safe folder and create a shortcut for it.
 
-\section{Xming}
+\section{Pitt VPN Client}
+Now we have to install the Pitt's VPN client, \textbf{ Pulse Secure}. This program is available throught Pitt's software download service. Download instructions are given here: \url{https://www.technology.pitt.edu/help-desk/how-to-documents/pittnet-vpn-pulse-secure-connect-pulse-secure-client}. Once you are added to the VPN list by Gracie, you'll be able to follow these instructions and log onto the VPN using your Pitt computing account credentials.
+
+\section{X11 Forwarding: Windows}
+\subsection{PuTTY}
+The first of multiple programs you will need to install to remotely log in is \textbf{PuTTY}. The latest version of \textbf{PuTTY} can be found at \url{http://the.earth.li/~sgtatham//latest/x86/putty.exe}. The program should download automatically and run from the download. I suggest you move the file to a safe folder and create a shortcut for it.
+
+\subsection{XMing}
 Next we must install \textbf{Xming}. This is a little bit more complicated. First go to \url{http://www.straightrunning.com/XmingNotes/}.
 Scroll until you see the \textbf{Public Domain Releases} heading, and download and install \textbf{Xming} \emph{version 6.9.0.31}. Now go to \url{http://www.filewatcher.com/m/Xming-fonts-6-9-0-6-setup.exe.31559463.0.0.html}. Download and install the first link labeled \textbf{Xming-fonts-6-9-0-6-setup.exe}. 
 
-\section{Cisco VPN Client}
-Now we have to install the \textbf{Cisco VPN Client}. This program is available throught Pitt's software download service. Once you get to the software download screen simply search for \emph{Cisco} to find it. Download and install it. Start the program and click the \textbf{New} connection type icon. Enter the following connection entry settings:
-\begin{description}
-\item[Connection Entry]: Pitt IPSec VPN
-\item[Description]: PittNet VPN
-\item[Host]: vpn.pitt.edu
-\end{description}
-Click the\textbf{ Authentication tab}, select the \textbf{Group Authentication} option, then enter the following settings:
-\begin{description}
-\item[Name]: phyast\_astro
-\item[Password]: P1ttPhy{@}st
-\item[Confirm Password]: P1ttPhy{@}st
-\end{description}
-Now click the \textbf{Save} button.
-\\You should now be able to connect using the \textbf{Connect} button located on the top left of the program's main screen. When prompted, enter your University Computing Account username and password. This is your my.pitt password, \emph{not} the password you use to log on to the Astro computers. To disconnect simply click the disconnect button. If you are idle for 30 minutes the program will automatically disconnect you.
+\section{X11 Forwarding: Mac}
+\subsection{XQuartz}
+First, download and install the XQuartz application, which can be found at \url{https://www.xquartz.org/}. This application is used to enable X11 forwarding for VNC through an ssh tunnel.
 
 
-\section{Remotely Logging In}
+\section{Remotely Logging In: Windows}
 Now that you have all the software, here is how to log in:
 \begin{enumerate}
-\item Initiate a secure connection by launching the \textbf{VPN Client}, clicking connect, and type in your my.pitt username and password. Once you have a secure connection you should be able to see a little yellow lock in your notification center on the taskbar. Mousing over it should pop up the words \emph{VPN Client - Connected}.
+\item Initiate a secure connection by launching the \textbf{Pulse Secure VPN Client}.
+
 \item Start \textbf{Xming}. No window will pop-up when you launch it; it justs runs in the background. It should also be present in your notification center as a black X.
-\item Start \textbf{Putty}. From here, you will first want to click the \emph{Connection - SSH - X11} tabs on the left, then check the radio box that says \emph{Enable X11 forwarding}. Next, click the \emph{Session} tab, and in the \emph{Host Name} text box type:
+\item Start \textbf{PuTTY}. From here, you will first want to click the \emph{Connection - SSH - X11} tabs on the left, then check the radio box that says \emph{Enable X11 forwarding}. Next, click the \emph{Session} tab, and in the \emph{Host Name} text box type:
 
 \begin{verbatim}
-username@ptolemy.phyast.pitt.edu
+username@computer.phyast.pitt.edu
 \end{verbatim}
 
-where \emph{username} is your specified username, and \emph{ptolemy} is the name of one of the computers in the lab, which can be replaced by any of the other computer names. Be aware that Ptolemy is the only computer in the Astro Lab that will allow you to access the observatory computer. Now click the \emph{Open} tab at the bottom of the screen. A new window will open and prompt you for your password. This is the password you use to log on to the astro computers, \emph{not} you normal university account password. Congratulations, you have successfully logged in!
+where \emph{username} is your username for the AstroLab computers, and \emph{computer} is the name of one the computers in the lab that you would like to sign into. STEPUP most commonly uses \emph{ptolemy} and \emph{geb}. Be aware that Ptolemy is the only computer in the Astro Lab that will allow you to access the observatory computer. 
+\item Now click the \emph{Open} tab at the bottom of the screen. A new window will open and prompt you for your password. This is the password you use to log on to the astro computers, \emph{not} you normal university account password. Congratulations, you have successfully logged in!
+\end{enumerate}
+
+\section{Remotely Logging In: Mac}
+Now that you have all the software, here is how to log in:
+\begin{enumerate}
+\item Initiate a secure connection by launching the \textbf{Pulse Secure VPN Client}.
+
+\item Open up a (bash) terminal window. Enter the following command:
+
+\begin{verbatim}
+ssh -Y username@computer.phyast.pitt.edu
+\end{verbatim}
+
+where \emph{username} is your username for the AstroLab computers, and \emph{computer} is the name of one the computers in the lab that you would like to sign into. STEPUP most commonly uses \emph{ptolemy} and \emph{geb}. Be aware that Ptolemy is the only computer in the Astro Lab that will allow you to access the observatory computer.
+
+\item You will then be prompted in the same window for your password. This is the password you use to log on to the astro computers, \emph{not} you normal university account password. Congratulations, you have successfully logged in!
 \end{enumerate}
 
 \section{WinSCP}
@@ -61,7 +72,7 @@ While \textbf{WinSCP} is not neccessary for logging in, it is needed to transfer
 \begin{verbatim}
 username@ptolemy.phyast.pitt.edu
 \end{verbatim}
-where \emph{username} is your specified username, and \emph{ptolemy} is the name of one of the computers in the lab, which can be replaced by any of the other computer names. Since it doesn't matter what Astro computer you log into at this point (You can even log on to a different computer than you connected to with \textbf{Putty}) feel free to try other computers. Personally I usually use \emph{ra} as it is much shorter and easier to spell than \emph{ptolemy}. 
+where \emph{username} is your specified username, and \emph{ptolemy} is the name of one of the computers in the lab, which can be replaced by any of the other computer names. Since it doesn't matter what Astro computer you log into at this point (You can even log on to a different computer than you connected to with \textbf{PuTTY}) feel free to try other computers. Personally I usually use \emph{ra} as it is much shorter and easier to spell than \emph{ptolemy}. 
 
 \begin{description}
 \item[Port number] : 22
@@ -70,7 +81,7 @@ where \emph{username} is your specified username, and \emph{ptolemy} is the name
 \item[Private key file] : leave it blank
 \end{description}
 
-Now click \emph{Login} to connect. The program should launch an Explorer-like interface with two panes. On the right is the files on the astro computer and on the left is your computer. You can now move files between the two. As a side note, you don't need to remotely log in with \textbf{Putty} to use \textbf{WinSCP}. However, you must initiate a secure connection with the \textbf{VPN Client} before starting \textbf{WinSCP}.
+Now click \emph{Login} to connect. The program should launch an Explorer-like interface with two panes. On the right is the files on the astro computer and on the left is your computer. You can now move files between the two. As a side note, you don't need to remotely log in with \textbf{PuTTY} to use \textbf{WinSCP}. However, you must initiate a secure connection with the \textbf{VPN Client} before starting \textbf{WinSCP}.
 
 
 \end{document}

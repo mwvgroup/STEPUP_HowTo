@@ -113,7 +113,9 @@ You should be taking calibrations each night that you observe. However, if you h
 \end{center}
 \end{figure}
 
-\item Still in the \emph{Sequence} tab, enter the name of the star in the \emph{Autosave Filename} box. Make sure that "1" is selected in the \emph{Start at} box. 
+The \emph{Suffix} box will create a filename that distinguishes different file types. Flats should be named as F\_<filter>, biases with a B, and darks with a D. These names should be case-sensitive without special characters, since there are different filters represented by the same letter. For example, SDSS r' $\rightarrow$ r and Cousins R $\rightarrow$ R. For H$\alpha$ use Ha.
+
+\item Still in the \emph{Sequence} tab, enter the name of the star in the \emph{Autosave Filename} box. Make sure that "1" is selected in the \emph{Start at} box.
 \item Start taking the calibration images by clicking \emph{Start}. As the images begin to download, open the folder you created. Make sure the calibration images are saving to that folder. You also want to make sure that the flat field lights are on.
 \end{enumerate}
 
@@ -126,7 +128,7 @@ Side-note: We also take 30 minute dark calibration images, but this only needs t
 \item Still in Digital DomeWorks, click the \emph{Open} button. This will open the dome shutters. Use the webcam to visually verify that the shutters of the dome are in fact opening. 
 \begin{itemize}
 \item\emph{Note:} You should never open the dome shutters unless you are sure there is no chance of precipitation in the area of the observatory. As a rule of thumb, do not open the shutters if it is mostly cloudy/overcast.
-\item To check this, use the environmental computer. Click the VNCViewer icon on the desktop and select the automatically-highlighted IP address. The password is \emph{foo}.
+\item To check this, use the environmental computer. Click the \emph{Run VNC Viewer} icon on the desktop and select the following IP address: 136.142.17.99. The password is \emph{foo}.
 \item At the bottom of this window, there is a current and time-lapse display of the skies above the observatory. Use the current display to ensure that it is not overcast. Once you are done, exit out of the environmental computer.
 \end{itemize}
 \item Open {\bf Starry Night College 6} on the desktop (If it asks for updates, do not update. If it asks for downloads, do not download). When the window opens click on the \emph{Telescope} tab on the left side of the screen. Then click \emph{Connect}. Minimize the \emph{Telescope} tab. Do not use these tabs again until closing.
@@ -137,6 +139,7 @@ Side-note: We also take 30 minute dark calibration images, but this only needs t
 \includegraphics[totalheight=.2\textheight]{centreon.png}
 \end{center}
 \end{figure}
+There are several equivalent ways of writing equatorial coordinates. For example, the right ascension $\alpha=00$h 00m 00.00s is equivalent to the condensed notation $\alpha=00$:00:00.00 and the declination, $\delta=00^{\circ}$ 00' 00.00" is equivalent to $\delta=00$:00:00.00.
 \item Zoom in to the small rectangular box that should be labeled "Meade RCX-400..." The zoom controls are in the upper right corner of the window. Find a 6-8 magnitude star nearby that is not a binary star system by moving your cursor over the stars. Right click on the star and select \emph{slew to 'starname'}. You should see a red cross hair cursor move to that point. This cursor indicates where the telescope is pointing. 
 \item Visually check on the webcam monitor that the telescope is pointing through the opening in the dome. Turn off flat field lights in the Keeler Power Controller 1.1. Also, close the webcam so that the computer can run faster.
 \item In MaxIM CCD window, go to the \emph{Expose} tab. Ensure that the filter selected in the drop-down box is the filter that you wish to observe in.

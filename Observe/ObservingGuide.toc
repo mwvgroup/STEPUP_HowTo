@@ -4,16 +4,16 @@
 \contentsline {section}{\numberline {1.3}General Startup}{3}
 \contentsline {section}{\numberline {1.4}Calibration}{3}
 \contentsline {section}{\numberline {1.5}Focusing}{5}
-\contentsline {section}{\numberline {1.6}Guiding}{6}
+\contentsline {section}{\numberline {1.6}Guiding}{7}
 \contentsline {section}{\numberline {1.7}Sequencing}{7}
-\contentsline {chapter}{\numberline {2}Using the Finder Camera}{8}
-\contentsline {chapter}{\numberline {3}Abridged Opening Checklist}{9}
-\contentsline {chapter}{\numberline {4}Closing Checklist}{11}
-\contentsline {chapter}{\numberline {5}Troubleshooting}{12}
-\contentsline {section}{\numberline {5.1}WinTV}{12}
-\contentsline {section}{\numberline {5.2}No stars in Image}{12}
-\contentsline {section}{\numberline {5.3}Wrong star field}{12}
-\contentsline {section}{\numberline {5.4}Dome}{13}
-\contentsline {section}{\numberline {5.5}Not focusing}{13}
-\contentsline {chapter}{\numberline {6}Appendix}{14}
-\contentsline {section}{\numberline {6.1}Sample Observing Report}{14}
+\contentsline {chapter}{\numberline {2}Using the Finder Camera}{9}
+\contentsline {chapter}{\numberline {3}Abridged Opening Checklist}{10}
+\contentsline {chapter}{\numberline {4}Closing Checklist}{12}
+\contentsline {chapter}{\numberline {5}Troubleshooting}{13}
+\contentsline {section}{\numberline {5.1}WinTV}{13}
+\contentsline {section}{\numberline {5.2}No stars in Image}{13}
+\contentsline {section}{\numberline {5.3}Wrong star field}{13}
+\contentsline {section}{\numberline {5.4}Dome}{14}
+\contentsline {section}{\numberline {5.5}Not focusing}{14}
+\contentsline {chapter}{\numberline {6}Appendix}{15}
+\contentsline {section}{\numberline {6.1}Sample Observing Report}{15}

@@ -1,4 +1,4 @@
-\documentclass[10pt,preprint]{aastex}
+\documentclass[10pt,preprint]{article}
 
 \usepackage{verbatim}
 \usepackage{graphicx}
@@ -7,32 +7,38 @@
 \title{Transfering Data from Allegheny Observatory to University Server}
 \author{Gwen Weaver}
 \date{April 2011}
+\maketitle
 
 \emph{Revised December 2013: No longer use diu-data.}
 
+\emph{Revised May 2020: New server in place.}
+
 \section{Handling Data}
-
-It is extremely important that any alterations to data be recorded and reported to the exoplanet list. It is also imporant that any changes made to raw data be performed in the workspace directory on a COPY of the original. 
-
-
-All raw data is stored in\emph{/home/depot/STEPUP/raw}
-
-It is also important that observing reports be written in a txt file and stored in the raw data file. This report must also be sent out to the exoplanet list so that it is stored on the archive. 
+\begin{itemize}
+\item It is extremely important that any alterations to data be reported to the exoplanet list and recorded in the STEPUP Google Drive. It is also important that any changes made to raw data be performed in the workspace directory on a COPY of the original. 
+\item All raw data is stored in \textbf{/home/depot/STEPUP/raw}.
+\item It is also important that observing reports be written in a text file and stored in the raw data directory and in the observing report archive on the Google Drive. This report must also be sent out to the exoplanet list so that it is stored on the archive. 
+\end{itemize}
 
 \section{Transferring Data}
+
+\emph{May 14th 2020: Needs revised since new server was put in place.}
+
 \begin{enumerate}
 
-\item On a computer in the lab open a terminal and go to \emph{/home/depot/STEPUP/raw}. At this point, if necessary, make a directory for your target. To do this type \emph{mkdir nameofstar}. If your target already has a directory, go to it. Then using the mkdir command make a directory of the date of the data you are transfering. Then go into the new date directory. Your final path should look something like \emph{/home/depot/STEPUP/raw/MC007/2011-04-13}. 
+\item On a computer in the lab open a terminal and go to \textbf{/home/depot/STEPUP/raw}. At this point, if necessary, make a directory for your target. To do this type \emph{mkdir $\langle$name-of-star$\rangle$}. If your target already has a directory, go to it. Then using the mkdir command make a directory of the date of the data you are transferring. Then go into the new date directory. Your final path should look something like (and follow the syntax of) \textbf{/home/depot/STEPUP/raw/MC007/2011-04-13}.
 
-\item Once in the appropriate directory type \emph{ftp aoserver1.univ.pitt.edu}. It will prompt you for a name, type anonymous. You can type anything for the password and hit enter. 
+\item Once in the appropriate directory type \emph{ftp aoserver1.univ.pitt.edu}. It will prompt you for a name. Enter \emph{anonymous}. You can type anything for the password and hit enter. 
 
-\item Now go to the directory from which you wish to transer data. For example type \emph{cd /STEPUPDataFiles/2011-04-13}. 
+\item Now go to the directory from which you wish to transfer data. For example type \emph{cd STEPUPDataFiles/2011-04-13}. 
 
 \item Before you begin copying files, you want to make sure that prompting is turned off so that you do not have to confirm the transfer of each image individually. To do this type  \emph{prompt}. This command toggles between off and on. You may need to type it twice to make sure it says prompting turned off. 
 
 \item Next type \emph{binary}. This changes the mode of transfer.
 
 \item Finally, to copy the files you will use the mget command. As an examply, type \emph{mget MC007*.fit}. This will start the transfer of images from the observatory server to the university server. 
+
+\item Enter \emph{bye} to log off of the SFTP session.
 \end{enumerate}
 
 \end{document}
